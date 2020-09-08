@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <string>
+
+#include "MatrixList.h"
 
 namespace CppCLRWinformsProjekt {
 
@@ -52,32 +55,17 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::Button^ botonAbrirMatrizA;
 	private: System::Windows::Forms::OpenFileDialog^ fileMatrizA;
 
-
-
 	private: System::Windows::Forms::DataGridView^ gridViewA;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
 	private: System::Windows::Forms::TextBox^ textPathnameA;
 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ label2;
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 
 
 
@@ -101,6 +89,7 @@ namespace CppCLRWinformsProjekt {
 		void InitializeComponent(void)
 		{
 			this->panelGeneral = (gcnew System::Windows::Forms::Panel());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->botonDeterminante = (gcnew System::Windows::Forms::Button());
 			this->botonMultiplicar = (gcnew System::Windows::Forms::Button());
 			this->botonRestar = (gcnew System::Windows::Forms::Button());
@@ -109,17 +98,14 @@ namespace CppCLRWinformsProjekt {
 			this->textPathnameA = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->gridViewA = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->botonAbrirMatrizA = (gcnew System::Windows::Forms::Button());
 			this->labelGeneral = (gcnew System::Windows::Forms::Label());
 			this->fileMatrizA = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panelGeneral->SuspendLayout();
 			this->panelContainer->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewA))->BeginInit();
@@ -134,19 +120,33 @@ namespace CppCLRWinformsProjekt {
 			this->panelGeneral->Controls->Add(this->botonMultiplicar);
 			this->panelGeneral->Controls->Add(this->botonRestar);
 			this->panelGeneral->Controls->Add(this->botonSumar);
-			this->panelGeneral->Location = System::Drawing::Point(0, 95);
+			this->panelGeneral->Location = System::Drawing::Point(0, 117);
+			this->panelGeneral->Margin = System::Windows::Forms::Padding(4);
 			this->panelGeneral->Name = L"panelGeneral";
-			this->panelGeneral->Size = System::Drawing::Size(181, 561);
+			this->panelGeneral->Size = System::Drawing::Size(241, 690);
 			this->panelGeneral->TabIndex = 0;
 			this->panelGeneral->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel1_Paint);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(47, 122);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(126, 27);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"Operaciones";
 			// 
 			// botonDeterminante
 			// 
 			this->botonDeterminante->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonDeterminante->Location = System::Drawing::Point(37, 393);
+			this->botonDeterminante->Location = System::Drawing::Point(49, 484);
+			this->botonDeterminante->Margin = System::Windows::Forms::Padding(4);
 			this->botonDeterminante->Name = L"botonDeterminante";
-			this->botonDeterminante->Size = System::Drawing::Size(100, 38);
+			this->botonDeterminante->Size = System::Drawing::Size(133, 47);
 			this->botonDeterminante->TabIndex = 3;
 			this->botonDeterminante->Text = L"Det A";
 			this->botonDeterminante->UseVisualStyleBackColor = true;
@@ -156,9 +156,10 @@ namespace CppCLRWinformsProjekt {
 			// 
 			this->botonMultiplicar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonMultiplicar->Location = System::Drawing::Point(37, 316);
+			this->botonMultiplicar->Location = System::Drawing::Point(49, 389);
+			this->botonMultiplicar->Margin = System::Windows::Forms::Padding(4);
 			this->botonMultiplicar->Name = L"botonMultiplicar";
-			this->botonMultiplicar->Size = System::Drawing::Size(100, 42);
+			this->botonMultiplicar->Size = System::Drawing::Size(133, 52);
 			this->botonMultiplicar->TabIndex = 2;
 			this->botonMultiplicar->Text = L"A x B";
 			this->botonMultiplicar->UseVisualStyleBackColor = true;
@@ -168,9 +169,10 @@ namespace CppCLRWinformsProjekt {
 			// 
 			this->botonRestar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonRestar->Location = System::Drawing::Point(37, 241);
+			this->botonRestar->Location = System::Drawing::Point(49, 297);
+			this->botonRestar->Margin = System::Windows::Forms::Padding(4);
 			this->botonRestar->Name = L"botonRestar";
-			this->botonRestar->Size = System::Drawing::Size(100, 42);
+			this->botonRestar->Size = System::Drawing::Size(133, 52);
 			this->botonRestar->TabIndex = 1;
 			this->botonRestar->Text = L"A - B";
 			this->botonRestar->UseVisualStyleBackColor = true;
@@ -180,9 +182,10 @@ namespace CppCLRWinformsProjekt {
 			// 
 			this->botonSumar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonSumar->Location = System::Drawing::Point(37, 165);
+			this->botonSumar->Location = System::Drawing::Point(49, 203);
+			this->botonSumar->Margin = System::Windows::Forms::Padding(4);
 			this->botonSumar->Name = L"botonSumar";
-			this->botonSumar->Size = System::Drawing::Size(100, 42);
+			this->botonSumar->Size = System::Drawing::Size(133, 52);
 			this->botonSumar->TabIndex = 0;
 			this->botonSumar->Text = L"A + B";
 			this->botonSumar->UseVisualStyleBackColor = true;
@@ -196,19 +199,19 @@ namespace CppCLRWinformsProjekt {
 			this->panelContainer->Controls->Add(this->gridViewA);
 			this->panelContainer->Controls->Add(this->botonAbrirMatrizA);
 			this->panelContainer->Controls->Add(this->labelGeneral);
-			this->panelContainer->Location = System::Drawing::Point(179, 97);
-			this->panelContainer->Margin = System::Windows::Forms::Padding(2);
+			this->panelContainer->Location = System::Drawing::Point(239, 119);
+			this->panelContainer->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panelContainer->Name = L"panelContainer";
-			this->panelContainer->Size = System::Drawing::Size(658, 559);
+			this->panelContainer->Size = System::Drawing::Size(877, 688);
 			this->panelContainer->TabIndex = 1;
 			this->panelContainer->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel2_Paint);
 			// 
 			// textPathnameA
 			// 
-			this->textPathnameA->Location = System::Drawing::Point(29, 131);
-			this->textPathnameA->Margin = System::Windows::Forms::Padding(2);
+			this->textPathnameA->Location = System::Drawing::Point(86, 150);
+			this->textPathnameA->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textPathnameA->Name = L"textPathnameA";
-			this->textPathnameA->Size = System::Drawing::Size(168, 20);
+			this->textPathnameA->Size = System::Drawing::Size(223, 22);
 			this->textPathnameA->TabIndex = 4;
 			// 
 			// label1
@@ -216,10 +219,9 @@ namespace CppCLRWinformsProjekt {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(88, 100);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(164, 112);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(67, 19);
+			this->label1->Size = System::Drawing::Size(79, 23);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Matriz A";
 			// 
@@ -227,75 +229,35 @@ namespace CppCLRWinformsProjekt {
 			// 
 			this->gridViewA->AllowUserToAddRows = false;
 			this->gridViewA->AllowUserToDeleteRows = false;
+			this->gridViewA->AllowUserToResizeColumns = false;
+			this->gridViewA->AllowUserToResizeRows = false;
 			this->gridViewA->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->gridViewA->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->gridViewA->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->gridViewA->ColumnHeadersVisible = false;
+			this->gridViewA->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->Column1, this->Column2,
-					this->Column3, this->Column4, this->Column5
+					this->Column3
 			});
-			this->gridViewA->Location = System::Drawing::Point(333, 86);
-			this->gridViewA->Margin = System::Windows::Forms::Padding(2);
+			this->gridViewA->Cursor = System::Windows::Forms::Cursors::Default;
+			this->gridViewA->Location = System::Drawing::Point(442, 106);
+			this->gridViewA->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->gridViewA->MultiSelect = false;
 			this->gridViewA->Name = L"gridViewA";
 			this->gridViewA->ReadOnly = true;
+			this->gridViewA->RowHeadersVisible = false;
 			this->gridViewA->RowHeadersWidth = 51;
 			this->gridViewA->RowTemplate->Height = 24;
-			this->gridViewA->Size = System::Drawing::Size(188, 144);
+			this->gridViewA->Size = System::Drawing::Size(251, 177);
 			this->gridViewA->TabIndex = 2;
-			this->gridViewA->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Form1::dataGridView1_CellContentClick);
-			// 
-			// Column1
-			// 
-			this->Column1->FillWeight = 50;
-			this->Column1->HeaderText = L"Column1";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 60;
-			// 
-			// Column2
-			// 
-			this->Column2->FillWeight = 50;
-			this->Column2->HeaderText = L"Column2";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 60;
-			// 
-			// Column3
-			// 
-			this->Column3->FillWeight = 50;
-			this->Column3->HeaderText = L"Column3";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 60;
-			// 
-			// Column4
-			// 
-			this->Column4->FillWeight = 50;
-			this->Column4->HeaderText = L"Column4";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->ReadOnly = true;
-			this->Column4->Width = 60;
-			// 
-			// Column5
-			// 
-			this->Column5->FillWeight = 50;
-			this->Column5->HeaderText = L"Column5";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
-			this->Column5->Width = 60;
 			// 
 			// botonAbrirMatrizA
 			// 
 			this->botonAbrirMatrizA->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonAbrirMatrizA->Location = System::Drawing::Point(194, 126);
-			this->botonAbrirMatrizA->Margin = System::Windows::Forms::Padding(2);
+			this->botonAbrirMatrizA->Location = System::Drawing::Point(306, 144);
+			this->botonAbrirMatrizA->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->botonAbrirMatrizA->Name = L"botonAbrirMatrizA";
-			this->botonAbrirMatrizA->Size = System::Drawing::Size(37, 27);
+			this->botonAbrirMatrizA->Size = System::Drawing::Size(49, 33);
 			this->botonAbrirMatrizA->TabIndex = 1;
 			this->botonAbrirMatrizA->Text = L"...";
 			this->botonAbrirMatrizA->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -307,10 +269,9 @@ namespace CppCLRWinformsProjekt {
 			this->labelGeneral->AutoSize = true;
 			this->labelGeneral->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelGeneral->Location = System::Drawing::Point(22, 15);
-			this->labelGeneral->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->labelGeneral->Location = System::Drawing::Point(29, 18);
 			this->labelGeneral->Name = L"labelGeneral";
-			this->labelGeneral->Size = System::Drawing::Size(234, 37);
+			this->labelGeneral->Size = System::Drawing::Size(280, 45);
 			this->labelGeneral->TabIndex = 0;
 			this->labelGeneral->Text = L"Ingresar matrices";
 			this->labelGeneral->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -326,8 +287,9 @@ namespace CppCLRWinformsProjekt {
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(837, 100);
+			this->panel1->Size = System::Drawing::Size(1116, 123);
 			this->panel1->TabIndex = 2;
 			// 
 			// label2
@@ -335,33 +297,50 @@ namespace CppCLRWinformsProjekt {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Elephant", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(202, 30);
+			this->label2->Location = System::Drawing::Point(269, 37);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(444, 31);
+			this->label2->Size = System::Drawing::Size(549, 38);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"CALCULADORA DE MATRICES";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// label3
+			// Column1
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(35, 99);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(102, 22);
-			this->label3->TabIndex = 4;
-			this->label3->Text = L"Operaciones";
+			this->Column1->FillWeight = 50;
+			this->Column1->HeaderText = L"";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 30;
+			// 
+			// Column2
+			// 
+			this->Column2->FillWeight = 50;
+			this->Column2->HeaderText = L"";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 30;
+			// 
+			// Column3
+			// 
+			this->Column3->FillWeight = 50;
+			this->Column3->HeaderText = L"";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Width = 30;
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(837, 656);
+			this->ClientSize = System::Drawing::Size(1116, 807);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->panelContainer);
 			this->Controls->Add(this->panelGeneral);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"Form1";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Calculadora de Matrices";
@@ -404,7 +383,21 @@ namespace CppCLRWinformsProjekt {
 		if (fileMatrizA->ShowDialog() == System::Windows::Forms::DialogResult::OK) { //validar que se seleccionara archivo
 		String^ pth = fileMatrizA->FileName;
 
+		std::string pathString;
+
+		MarshalString(pth, pathString);
+
+		MatrixList A = MatrixList::loadFile(pathString.c_str());
+
 		this->textPathnameA->Text = pth;
+
+		//Row1
+		array<Object^>^ temp0 = gcnew array<Object^>(3);
+		temp0[0] = 1;
+		temp0[1] = 2;
+		temp0[2] = 3;
+		this->gridViewA->Rows->Add(temp0);
+
 			///*array<String^>^ myarr = File::ReadAllLines(pth);
 
 			//for each (String ^ ST in myarr) {
@@ -437,7 +430,12 @@ namespace CppCLRWinformsProjekt {
 		}
 
 	}
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	void MarshalString(String^ s, std::string& os) {
+		using namespace Runtime::InteropServices;
+		const char* chars =
+			(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+		os = chars;
+		Marshal::FreeHGlobal(IntPtr((void*)chars));
 	}
 };
 }
