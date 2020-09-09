@@ -64,8 +64,14 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+
+
+
 
 
 
@@ -104,6 +110,9 @@ namespace CppCLRWinformsProjekt {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panelGeneral->SuspendLayout();
@@ -208,10 +217,10 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// textPathnameA
 			// 
-			this->textPathnameA->Location = System::Drawing::Point(86, 150);
+			this->textPathnameA->Location = System::Drawing::Point(37, 150);
 			this->textPathnameA->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textPathnameA->Name = L"textPathnameA";
-			this->textPathnameA->Size = System::Drawing::Size(223, 22);
+			this->textPathnameA->Size = System::Drawing::Size(272, 22);
 			this->textPathnameA->TabIndex = 4;
 			// 
 			// label1
@@ -219,7 +228,7 @@ namespace CppCLRWinformsProjekt {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(164, 112);
+			this->label1->Location = System::Drawing::Point(149, 106);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(79, 23);
 			this->label1->TabIndex = 3;
@@ -234,10 +243,6 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewA->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->gridViewA->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->gridViewA->ColumnHeadersVisible = false;
-			this->gridViewA->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
-				this->Column1, this->Column2,
-					this->Column3
-			});
 			this->gridViewA->Cursor = System::Windows::Forms::Cursors::Default;
 			this->gridViewA->Location = System::Drawing::Point(442, 106);
 			this->gridViewA->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -314,6 +319,31 @@ namespace CppCLRWinformsProjekt {
 			this->Column1->ReadOnly = true;
 			this->Column1->Width = 30;
 			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			this->Column4->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column4->Width = 30;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
+			this->Column5->Width = 30;
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"";
+			this->Column6->MinimumWidth = 6;
+			this->Column6->Name = L"Column6";
+			this->Column6->ReadOnly = true;
+			this->Column6->Width = 30;
+			// 
 			// Column2
 			// 
 			this->Column2->FillWeight = 50;
@@ -377,6 +407,8 @@ namespace CppCLRWinformsProjekt {
 	}
 	private: System::Void botonAbrirArchivo_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->textPathnameA->Clear();
+		this->gridViewA->Rows->Clear();
+		this->gridViewA->Columns->Clear();
 		//this->textboxMatriz->Clear(); //limpiar antes de abrir nuevo archivo
 		this->fileMatrizA->Filter = "Txt Files (*.txt)|*.txt";
 
@@ -389,15 +421,36 @@ namespace CppCLRWinformsProjekt {
 
 		MatrixList A = MatrixList::loadFile(pathString.c_str());
 
+		if (A.getM() == 0 && A.getN() == 0) {
+			MessageBox::Show("Archivo no es válido");
+		}
+
 		this->textPathnameA->Text = pth;
 
-		//Row1
-		array<Object^>^ temp0 = gcnew array<Object^>(3);
-		temp0[0] = 1;
-		temp0[1] = 2;
-		temp0[2] = 3;
-		this->gridViewA->Rows->Add(temp0);
+		for (int i = 0; i < A.getN(); i++) {
+			if (i == 0)
+				this->gridViewA->Columns->Add(this->Column1);
+			if (i == 1)
+				this->gridViewA->Columns->Add(this->Column2);
+			if (i == 2)
+				this->gridViewA->Columns->Add(this->Column3);
+			if (i == 3)
+				this->gridViewA->Columns->Add(this->Column4);
+			if (i == 4)
+				this->gridViewA->Columns->Add(this->Column5);
+			if (i == 5)
+				this->gridViewA->Columns->Add(this->Column6);
+		}
 
+		array<Object^>^ rowsVals = gcnew array<Object^>(A.getN());
+
+		for (int i = 0; i < A.getM(); i++) {
+			
+			for (int j = 0; j < A.getN(); j++) {
+				rowsVals[j] = A.findValue(i, j);
+			}
+			this->gridViewA->Rows->Add(rowsVals); //mostrar cada fila en la matriz con valores ingresados
+		}
 			///*array<String^>^ myarr = File::ReadAllLines(pth);
 
 			//for each (String ^ ST in myarr) {

@@ -36,6 +36,8 @@ public:
 	void addElement(int);
 	void printMatrix();
 
+	int findValue(int, int);
+
 	//operaciones aritmeticas
 	MatrixList addition(Node*, Node*, int, int, int, int);
 	MatrixList subtraction(Node*, Node*, int, int, int, int);

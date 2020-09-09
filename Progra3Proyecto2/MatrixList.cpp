@@ -215,6 +215,34 @@ void MatrixList::printMatrix() {
     cout << "\n";
 }
 
+int MatrixList::findValue(int posX, int posY) {
+    // pointer to move right 
+    Node* rightPtr;
+
+    // pointer to move down 
+    Node* downPtr = head;
+
+    int x = 0, y;
+
+    // loop till node->down is not NULL 
+    while (downPtr != nullptr) {
+        rightPtr = downPtr;
+        y = 0;
+        // loop till node->right is not NULL 
+        while (rightPtr != nullptr) {
+            if (x == posX && y == posY) {
+                return rightPtr->getValue(); //retorna el valor en la posición adecuada
+            }
+            y++;
+            rightPtr = rightPtr->getRight();
+        }
+        x++;
+        downPtr = downPtr->getDown();
+    }
+
+    return -1;
+}
+
 MatrixList MatrixList::addition(Node* headA, Node* headB, int m_A, int n_A, int m_B, int n_B) {
 
     MatrixList result(0, 0);
