@@ -23,6 +23,7 @@ private:
 
 public:
 	//constructor
+	MatrixList();
 	MatrixList(int, int);
 
 	//getters y setters

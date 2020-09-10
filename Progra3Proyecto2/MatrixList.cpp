@@ -9,6 +9,9 @@
 
 using namespace std;
 
+MatrixList::MatrixList() : head(nullptr), m(0), n(0)
+{   }
+
 MatrixList::MatrixList(int _m, int _n) : head(nullptr), m(_m), n(_n)
 {	}
 
