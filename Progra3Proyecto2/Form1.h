@@ -24,6 +24,11 @@ namespace CppCLRWinformsProjekt {
 	private:
 		String^ pathMatrixA;
 		String^ pathMatrixB;
+	private: System::Windows::Forms::Label^ iconoIgualdad;
+	private: System::Windows::Forms::DataGridView^ gridViewResultado;
+
+	private: System::Windows::Forms::Label^ iconoOperacion;
+		 
 
 	public:
 		Form1(void)
@@ -64,8 +69,9 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::DataGridView^ gridViewA;
 
 	private: System::Windows::Forms::TextBox^ textPathnameA;
+	private: System::Windows::Forms::Label^ labelMatrizA;
 
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ label2;
@@ -97,10 +103,25 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11B;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12B;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column13B;
+		   //MATRIZ RESULTADO
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12R;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column13R;
 
 	private: System::Windows::Forms::TextBox^ textPathnameB;
+	private: System::Windows::Forms::Label^ labelMatrizB;
 
-	private: System::Windows::Forms::Label^ label4;
+
 	private: System::Windows::Forms::Button^ botonAbrirMatrizB;
 	private: System::Windows::Forms::DataGridView^ gridViewB;
 	private: System::Windows::Forms::Button^ botonIngresar;
@@ -126,6 +147,7 @@ namespace CppCLRWinformsProjekt {
 		{
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panelGeneral = (gcnew System::Windows::Forms::Panel());
 			this->botonIngresar = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -134,12 +156,15 @@ namespace CppCLRWinformsProjekt {
 			this->botonRestar = (gcnew System::Windows::Forms::Button());
 			this->botonSumar = (gcnew System::Windows::Forms::Button());
 			this->panelContainer = (gcnew System::Windows::Forms::Panel());
+			this->gridViewResultado = (gcnew System::Windows::Forms::DataGridView());
+			this->iconoIgualdad = (gcnew System::Windows::Forms::Label());
+			this->iconoOperacion = (gcnew System::Windows::Forms::Label());
 			this->gridViewB = (gcnew System::Windows::Forms::DataGridView());
 			this->textPathnameB = (gcnew System::Windows::Forms::TextBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->labelMatrizB = (gcnew System::Windows::Forms::Label());
 			this->botonAbrirMatrizB = (gcnew System::Windows::Forms::Button());
 			this->textPathnameA = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->labelMatrizA = (gcnew System::Windows::Forms::Label());
 			this->gridViewA = (gcnew System::Windows::Forms::DataGridView());
 			this->botonAbrirMatrizA = (gcnew System::Windows::Forms::Button());
 			this->labelGeneral = (gcnew System::Windows::Forms::Label());
@@ -172,8 +197,22 @@ namespace CppCLRWinformsProjekt {
 			this->Column11B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column12B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column13B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column7R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column8R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column9R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column10R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column11R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column12R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column13R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panelGeneral->SuspendLayout();
 			this->panelContainer->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewResultado))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewB))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewA))->BeginInit();
 			this->panel1->SuspendLayout();
@@ -275,12 +314,15 @@ namespace CppCLRWinformsProjekt {
 			// panelContainer
 			// 
 			this->panelContainer->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->panelContainer->Controls->Add(this->gridViewResultado);
+			this->panelContainer->Controls->Add(this->iconoIgualdad);
+			this->panelContainer->Controls->Add(this->iconoOperacion);
 			this->panelContainer->Controls->Add(this->gridViewB);
 			this->panelContainer->Controls->Add(this->textPathnameB);
-			this->panelContainer->Controls->Add(this->label4);
+			this->panelContainer->Controls->Add(this->labelMatrizB);
 			this->panelContainer->Controls->Add(this->botonAbrirMatrizB);
 			this->panelContainer->Controls->Add(this->textPathnameA);
-			this->panelContainer->Controls->Add(this->label1);
+			this->panelContainer->Controls->Add(this->labelMatrizA);
 			this->panelContainer->Controls->Add(this->gridViewA);
 			this->panelContainer->Controls->Add(this->botonAbrirMatrizA);
 			this->panelContainer->Controls->Add(this->labelGeneral);
@@ -290,6 +332,58 @@ namespace CppCLRWinformsProjekt {
 			this->panelContainer->Size = System::Drawing::Size(877, 688);
 			this->panelContainer->TabIndex = 1;
 			this->panelContainer->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel2_Paint);
+			// 
+			// gridViewResultado
+			// 
+			this->gridViewResultado->AllowUserToAddRows = false;
+			this->gridViewResultado->AllowUserToDeleteRows = false;
+			this->gridViewResultado->AllowUserToResizeColumns = false;
+			this->gridViewResultado->AllowUserToResizeRows = false;
+			this->gridViewResultado->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->gridViewResultado->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
+			this->gridViewResultado->ColumnHeadersHeight = 29;
+			this->gridViewResultado->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+			this->gridViewResultado->ColumnHeadersVisible = false;
+			this->gridViewResultado->Cursor = System::Windows::Forms::Cursors::Default;
+			this->gridViewResultado->Location = System::Drawing::Point(487, 276);
+			this->gridViewResultado->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->gridViewResultado->MultiSelect = false;
+			this->gridViewResultado->Name = L"gridViewResultado";
+			this->gridViewResultado->ReadOnly = true;
+			this->gridViewResultado->RowHeadersVisible = false;
+			this->gridViewResultado->RowHeadersWidth = 51;
+			this->gridViewResultado->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::ControlText;
+			this->gridViewResultado->RowsDefaultCellStyle = dataGridViewCellStyle1;
+			this->gridViewResultado->RowTemplate->Height = 24;
+			this->gridViewResultado->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
+			this->gridViewResultado->ShowCellToolTips = false;
+			this->gridViewResultado->ShowEditingIcon = false;
+			this->gridViewResultado->Size = System::Drawing::Size(251, 177);
+			this->gridViewResultado->TabIndex = 11;
+			// 
+			// iconoIgualdad
+			// 
+			this->iconoIgualdad->AutoSize = true;
+			this->iconoIgualdad->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->iconoIgualdad->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->iconoIgualdad->Location = System::Drawing::Point(370, 347);
+			this->iconoIgualdad->Name = L"iconoIgualdad";
+			this->iconoIgualdad->Size = System::Drawing::Size(0, 46);
+			this->iconoIgualdad->TabIndex = 10;
+			// 
+			// iconoOperacion
+			// 
+			this->iconoOperacion->AutoSize = true;
+			this->iconoOperacion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->iconoOperacion->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->iconoOperacion->Location = System::Drawing::Point(88, 347);
+			this->iconoOperacion->Name = L"iconoOperacion";
+			this->iconoOperacion->Size = System::Drawing::Size(0, 46);
+			this->iconoOperacion->TabIndex = 9;
 			// 
 			// gridViewB
 			// 
@@ -302,7 +396,7 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewB->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->gridViewB->ColumnHeadersVisible = false;
 			this->gridViewB->Cursor = System::Windows::Forms::Cursors::Default;
-			this->gridViewB->Location = System::Drawing::Point(86, 366);
+			this->gridViewB->Location = System::Drawing::Point(86, 429);
 			this->gridViewB->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->gridViewB->MultiSelect = false;
 			this->gridViewB->Name = L"gridViewB";
@@ -310,9 +404,9 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewB->RowHeadersVisible = false;
 			this->gridViewB->RowHeadersWidth = 51;
 			this->gridViewB->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::ControlText;
-			this->gridViewB->RowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::ControlText;
+			this->gridViewB->RowsDefaultCellStyle = dataGridViewCellStyle2;
 			this->gridViewB->RowTemplate->Height = 24;
 			this->gridViewB->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
 			this->gridViewB->ShowCellToolTips = false;
@@ -320,31 +414,30 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewB->Size = System::Drawing::Size(251, 177);
 			this->gridViewB->TabIndex = 8;
 			// 
-			inicializarColumnasB();
 			// textPathnameB
 			// 
-			this->textPathnameB->Location = System::Drawing::Point(442, 467);
+			this->textPathnameB->Location = System::Drawing::Point(442, 530);
 			this->textPathnameB->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textPathnameB->Name = L"textPathnameB";
 			this->textPathnameB->Size = System::Drawing::Size(296, 22);
 			this->textPathnameB->TabIndex = 7;
 			// 
-			// label4
+			// labelMatrizB
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->labelMatrizB->AutoSize = true;
+			this->labelMatrizB->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(555, 392);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(91, 27);
-			this->label4->TabIndex = 6;
-			this->label4->Text = L"Matriz B";
+			this->labelMatrizB->Location = System::Drawing::Point(555, 455);
+			this->labelMatrizB->Name = L"labelMatrizB";
+			this->labelMatrizB->Size = System::Drawing::Size(91, 27);
+			this->labelMatrizB->TabIndex = 6;
+			this->labelMatrizB->Text = L"Matriz B";
 			// 
 			// botonAbrirMatrizB
 			// 
 			this->botonAbrirMatrizB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonAbrirMatrizB->Location = System::Drawing::Point(735, 461);
+			this->botonAbrirMatrizB->Location = System::Drawing::Point(735, 524);
 			this->botonAbrirMatrizB->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->botonAbrirMatrizB->Name = L"botonAbrirMatrizB";
 			this->botonAbrirMatrizB->Size = System::Drawing::Size(49, 33);
@@ -362,16 +455,16 @@ namespace CppCLRWinformsProjekt {
 			this->textPathnameA->Size = System::Drawing::Size(296, 22);
 			this->textPathnameA->TabIndex = 4;
 			// 
-			// label1
+			// labelMatrizA
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->labelMatrizA->AutoSize = true;
+			this->labelMatrizA->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(555, 156);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(93, 27);
-			this->label1->TabIndex = 3;
-			this->label1->Text = L"Matriz A";
+			this->labelMatrizA->Location = System::Drawing::Point(555, 156);
+			this->labelMatrizA->Name = L"labelMatrizA";
+			this->labelMatrizA->Size = System::Drawing::Size(93, 27);
+			this->labelMatrizA->TabIndex = 3;
+			this->labelMatrizA->Text = L"Matriz A";
 			// 
 			// gridViewA
 			// 
@@ -393,9 +486,9 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewA->RowHeadersVisible = false;
 			this->gridViewA->RowHeadersWidth = 51;
 			this->gridViewA->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::ControlText;
-			this->gridViewA->RowsDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::ControlText;
+			this->gridViewA->RowsDefaultCellStyle = dataGridViewCellStyle3;
 			this->gridViewA->RowTemplate->Height = 24;
 			this->gridViewA->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
 			this->gridViewA->ShowCellToolTips = false;
@@ -403,7 +496,6 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewA->Size = System::Drawing::Size(251, 177);
 			this->gridViewA->TabIndex = 2;
 			// 
-			inicializarColumnasA();
 			// botonAbrirMatrizA
 			// 
 			this->botonAbrirMatrizA->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -475,18 +567,32 @@ namespace CppCLRWinformsProjekt {
 			this->panelGeneral->PerformLayout();
 			this->panelContainer->ResumeLayout(false);
 			this->panelContainer->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewResultado))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewB))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewA))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-
+			//Inicializar Columnas Matrices
+			inicializarColumnasA();
+			inicializarColumnasB();
+			inicializarColumnasResultado();
 		}
 #pragma endregion
 	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->labelGeneral->Text = "Sumar Matrices";
+		this->iconoOperacion->Text = L"+";
+		this->iconoIgualdad->Text = L"=";
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+		this->labelMatrizA->Visible = false;
+		this->textPathnameA->Visible = false;
+		this->botonAbrirMatrizA->Visible = false;
+		this->labelMatrizB->Visible = false;
+		this->textPathnameB->Visible = false;
+		this->botonAbrirMatrizB->Visible = false;
 
 		if (this->pathMatrixA == nullptr || this->pathMatrixB == nullptr) {
 			MessageBox::Show("Asegurese de seleccionar matrices\npara realizar operaciones");
@@ -510,6 +616,8 @@ namespace CppCLRWinformsProjekt {
 			return;
 		}
 
+		llenarMatrizResultado(C); //si todo sale bien, llenar la matriz resultado con el resultado
+
 	}
 	private: System::Void panel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
@@ -517,17 +625,71 @@ namespace CppCLRWinformsProjekt {
 	}
 	private: System::Void botonIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->labelGeneral->Text = "Ingresar Matrices";
+
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+
+		this->iconoOperacion->Text = L"";
+		this->iconoIgualdad->Text = L"";
+
+		this->labelMatrizA->Visible = 1;
+		this->textPathnameA->Visible = 1;
+		this->botonAbrirMatrizA->Visible = 1;
+		this->labelMatrizB->Visible = 1;
+		this->textPathnameB->Visible = 1;
+		this->botonAbrirMatrizB->Visible = 1;
+
 	}
 	private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
 		this->labelGeneral->Text = "Restar Matrices";
+
+		this->iconoOperacion->Text = L"-";
+		this->iconoIgualdad->Text = L"=";
+
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+
+		this->labelMatrizA->Visible = false;
+		this->textPathnameA->Visible = false;
+		this->botonAbrirMatrizA->Visible = false;
+		this->labelMatrizB->Visible = false;
+		this->textPathnameB->Visible = false;
+		this->botonAbrirMatrizB->Visible = false;
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void botonMultiplicar_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->labelGeneral->Text = "Multiplicar Matrices";
+
+		this->iconoOperacion->Text = L"x";
+		this->iconoIgualdad->Text = L"=";
+
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+
+		this->labelMatrizA->Visible = false;
+		this->textPathnameA->Visible = false;
+		this->botonAbrirMatrizA->Visible = false;
+		this->labelMatrizB->Visible = false;
+		this->textPathnameB->Visible = false;
+		this->botonAbrirMatrizB->Visible = false;
 	}
 	private: System::Void botonDeterminante_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->labelGeneral->Text = "Determinante de Matriz";
+
+		this->iconoOperacion->Text = L"det A";
+		this->iconoIgualdad->Text = L"=";
+
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+
+		this->labelMatrizA->Visible = false;
+		this->textPathnameA->Visible = false;
+		this->botonAbrirMatrizA->Visible = false;
+		this->labelMatrizB->Visible = false;
+		this->textPathnameB->Visible = false;
+		this->botonAbrirMatrizB->Visible = false;
+
 	}
 	private: System::Void botonAbrirArchivo_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Limpar matrices y texto con ubicación de archivo
@@ -693,6 +855,49 @@ namespace CppCLRWinformsProjekt {
 		MatrixList matrix = MatrixList::loadFile(pathString.c_str()); //cargar archivo en la lista enlazada
 
 		return matrix;
+	}
+
+	void llenarMatrizResultado(MatrixList C) {
+		//----Ingresar columnas-----
+		for (int i = 0; i < C.getN(); i++) { //cargar en gridview la cantidad de columnas acorde a la matriz A
+			if (i == 0)
+				this->gridViewResultado->Columns->Add(this->Column1R);
+			if (i == 1)
+				this->gridViewResultado->Columns->Add(this->Column2R);
+			if (i == 2)
+				this->gridViewResultado->Columns->Add(this->Column3R);
+			if (i == 3)
+				this->gridViewResultado->Columns->Add(this->Column4R);
+			if (i == 4)
+				this->gridViewResultado->Columns->Add(this->Column5R);
+			if (i == 5)
+				this->gridViewResultado->Columns->Add(this->Column6R);
+			if (i == 6)
+				this->gridViewResultado->Columns->Add(this->Column7R);
+			if (i == 7)
+				this->gridViewResultado->Columns->Add(this->Column8R);
+			if (i == 8)
+				this->gridViewResultado->Columns->Add(this->Column9R);
+			if (i == 9)
+				this->gridViewResultado->Columns->Add(this->Column10R);
+			if (i == 10)
+				this->gridViewResultado->Columns->Add(this->Column11R);
+			if (i == 11)
+				this->gridViewResultado->Columns->Add(this->Column12R);
+			if (i == 12)
+				this->gridViewResultado->Columns->Add(this->Column13R);
+		}
+
+		array<Object^>^ rowsVals = gcnew array<Object^>(C.getN());
+
+		//-----Ingresar valores y filas-----
+		for (int i = 0; i < C.getM(); i++) {
+
+			for (int j = 0; j < C.getN(); j++) {
+				rowsVals[j] = C.findValue(i, j);
+			}
+			this->gridViewResultado->Rows->Add(rowsVals); //mostrar cada fila en la matriz con valores ingresados
+		}
 	}
 
     void inicializarColumnasA() {
@@ -927,6 +1132,87 @@ namespace CppCLRWinformsProjekt {
 		this->Column13B->Name = L"Column13B";
 		this->Column13B->ReadOnly = true;
 		this->Column13B->Width = 30;
+	}
+
+	void inicializarColumnasResultado() {
+		// 
+		// Column1
+		// 
+		this->Column1R->MinimumWidth = 6;
+		this->Column1R->Name = L"Column1R";
+		this->Column1R->Width = 30;
+		// 
+		// Column2
+		// 
+		this->Column2R->MinimumWidth = 6;
+		this->Column2R->Name = L"Column2R";
+		this->Column2R->Width = 30;
+		// 
+		// Column3
+		// 
+		this->Column3R->MinimumWidth = 6;
+		this->Column3R->Name = L"Column3R";
+		this->Column3R->Width = 30;
+		// 
+		// Column4
+		// 
+		this->Column4R->MinimumWidth = 6;
+		this->Column4R->Name = L"Column4R";
+		this->Column4R->Width = 30;
+		// 
+		// Column5
+		// 
+		this->Column5R->MinimumWidth = 6;
+		this->Column5R->Name = L"Column5R";
+		this->Column5R->Width = 30;
+		// 
+		// Column6
+		// 
+		this->Column6R->MinimumWidth = 6;
+		this->Column6R->Name = L"Column6R";
+		this->Column6R->Width = 30;
+		// 
+		// Column7
+		// 
+		this->Column7R->MinimumWidth = 6;
+		this->Column7R->Name = L"Column7R";
+		this->Column7R->Width = 30;
+		// 
+		// Column8
+		// 
+		this->Column8R->MinimumWidth = 6;
+		this->Column8R->Name = L"Column8R";
+		this->Column8R->Width = 30;
+		// 
+		// Column9
+		// 
+		this->Column9R->MinimumWidth = 6;
+		this->Column9R->Name = L"Column9R";
+		this->Column9R->Width = 30;
+		// 
+		// Column10
+		// 
+		this->Column10R->MinimumWidth = 6;
+		this->Column10R->Name = L"Column10R";
+		this->Column10R->Width = 30;
+		// 
+		// Column11
+		// 
+		this->Column11R->MinimumWidth = 6;
+		this->Column11R->Name = L"Column11R";
+		this->Column11R->Width = 30;
+		// 
+		// Column12
+		// 
+		this->Column12R->MinimumWidth = 6;
+		this->Column12R->Name = L"Column12R";
+		this->Column12R->Width = 30;
+		// 
+		// Column13
+		// 
+		this->Column13R->MinimumWidth = 6;
+		this->Column13R->Name = L"Column13R";
+		this->Column13R->Width = 30;
 	}
 };
 }
