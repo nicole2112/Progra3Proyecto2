@@ -24,8 +24,17 @@ namespace CppCLRWinformsProjekt {
 	private:
 		String^ pathMatrixA;
 		String^ pathMatrixB;
+		Node* headMatrizA;
+		Node* headMatrizB;
+		int A_m, A_n;
+		int B_m, B_n;
+		Node* headResultado;
+
 	private: System::Windows::Forms::Label^ iconoIgualdad;
 	private: System::Windows::Forms::DataGridView^ gridViewResultado;
+	private: System::Windows::Forms::Button^ botonGuardarMatrizRes;
+	private: System::Windows::Forms::TextBox^ textFileResultado;
+	private: System::Windows::Forms::Label^ labelMatrizResultante;
 
 	private: System::Windows::Forms::Label^ iconoOperacion;
 		 
@@ -52,9 +61,11 @@ namespace CppCLRWinformsProjekt {
 		}
 
 	private: System::Windows::Forms::Panel^ panelGeneral;
+	private: System::Windows::Forms::Button^ botonIngresar;
+
 	protected:
 
-	private: System::Windows::Forms::Button^ botonSumar;
+
 	private: System::Windows::Forms::Panel^ panelContainer;
 
 
@@ -124,7 +135,8 @@ namespace CppCLRWinformsProjekt {
 
 	private: System::Windows::Forms::Button^ botonAbrirMatrizB;
 	private: System::Windows::Forms::DataGridView^ gridViewB;
-	private: System::Windows::Forms::Button^ botonIngresar;
+private: System::Windows::Forms::Button^ botonSumar;
+
 
 
 	protected:
@@ -149,13 +161,16 @@ namespace CppCLRWinformsProjekt {
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panelGeneral = (gcnew System::Windows::Forms::Panel());
-			this->botonIngresar = (gcnew System::Windows::Forms::Button());
+			this->botonSumar = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->botonDeterminante = (gcnew System::Windows::Forms::Button());
 			this->botonMultiplicar = (gcnew System::Windows::Forms::Button());
 			this->botonRestar = (gcnew System::Windows::Forms::Button());
-			this->botonSumar = (gcnew System::Windows::Forms::Button());
+			this->botonIngresar = (gcnew System::Windows::Forms::Button());
 			this->panelContainer = (gcnew System::Windows::Forms::Panel());
+			this->botonGuardarMatrizRes = (gcnew System::Windows::Forms::Button());
+			this->textFileResultado = (gcnew System::Windows::Forms::TextBox());
+			this->labelMatrizResultante = (gcnew System::Windows::Forms::Label());
 			this->gridViewResultado = (gcnew System::Windows::Forms::DataGridView());
 			this->iconoIgualdad = (gcnew System::Windows::Forms::Label());
 			this->iconoOperacion = (gcnew System::Windows::Forms::Label());
@@ -220,13 +235,13 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// panelGeneral
 			// 
-			this->panelGeneral->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->panelGeneral->Controls->Add(this->botonIngresar);
+			this->panelGeneral->BackColor = System::Drawing::Color::DarkSlateGray;
+			this->panelGeneral->Controls->Add(this->botonSumar);
 			this->panelGeneral->Controls->Add(this->label3);
 			this->panelGeneral->Controls->Add(this->botonDeterminante);
 			this->panelGeneral->Controls->Add(this->botonMultiplicar);
 			this->panelGeneral->Controls->Add(this->botonRestar);
-			this->panelGeneral->Controls->Add(this->botonSumar);
+			this->panelGeneral->Controls->Add(this->botonIngresar);
 			this->panelGeneral->Location = System::Drawing::Point(0, 117);
 			this->panelGeneral->Margin = System::Windows::Forms::Padding(4);
 			this->panelGeneral->Name = L"panelGeneral";
@@ -234,28 +249,29 @@ namespace CppCLRWinformsProjekt {
 			this->panelGeneral->TabIndex = 0;
 			this->panelGeneral->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel1_Paint);
 			// 
-			// botonIngresar
+			// botonSumar
 			// 
-			this->botonIngresar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->botonSumar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonIngresar->Location = System::Drawing::Point(49, 59);
-			this->botonIngresar->Margin = System::Windows::Forms::Padding(4);
-			this->botonIngresar->Name = L"botonIngresar";
-			this->botonIngresar->Size = System::Drawing::Size(133, 52);
-			this->botonIngresar->TabIndex = 5;
-			this->botonIngresar->Text = L"Ingresar Matrices";
-			this->botonIngresar->UseVisualStyleBackColor = true;
-			this->botonIngresar->Click += gcnew System::EventHandler(this, &Form1::botonIngresar_Click);
+			this->botonSumar->Location = System::Drawing::Point(49, 208);
+			this->botonSumar->Margin = System::Windows::Forms::Padding(4);
+			this->botonSumar->Name = L"botonSumar";
+			this->botonSumar->Size = System::Drawing::Size(133, 52);
+			this->botonSumar->TabIndex = 5;
+			this->botonSumar->Text = L"A + B";
+			this->botonSumar->UseVisualStyleBackColor = true;
+			this->botonSumar->Click += gcnew System::EventHandler(this, &Form1::botonIngresar_Click);
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(47, 140);
+			this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label3->Location = System::Drawing::Point(43, 142);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(126, 27);
+			this->label3->Size = System::Drawing::Size(151, 32);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Operaciones";
 			// 
@@ -298,22 +314,25 @@ namespace CppCLRWinformsProjekt {
 			this->botonRestar->UseVisualStyleBackColor = true;
 			this->botonRestar->Click += gcnew System::EventHandler(this, &Form1::button1_Click_2);
 			// 
-			// botonSumar
+			// botonIngresar
 			// 
-			this->botonSumar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->botonIngresar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->botonSumar->Location = System::Drawing::Point(49, 221);
-			this->botonSumar->Margin = System::Windows::Forms::Padding(4);
-			this->botonSumar->Name = L"botonSumar";
-			this->botonSumar->Size = System::Drawing::Size(133, 52);
-			this->botonSumar->TabIndex = 0;
-			this->botonSumar->Text = L"A + B";
-			this->botonSumar->UseVisualStyleBackColor = true;
-			this->botonSumar->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			this->botonIngresar->Location = System::Drawing::Point(52, 62);
+			this->botonIngresar->Margin = System::Windows::Forms::Padding(4);
+			this->botonIngresar->Name = L"botonIngresar";
+			this->botonIngresar->Size = System::Drawing::Size(133, 52);
+			this->botonIngresar->TabIndex = 0;
+			this->botonIngresar->Text = L"Ingresar Matrices";
+			this->botonIngresar->UseVisualStyleBackColor = true;
+			this->botonIngresar->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// panelContainer
 			// 
-			this->panelContainer->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->panelContainer->BackColor = System::Drawing::Color::PaleTurquoise;
+			this->panelContainer->Controls->Add(this->botonGuardarMatrizRes);
+			this->panelContainer->Controls->Add(this->textFileResultado);
+			this->panelContainer->Controls->Add(this->labelMatrizResultante);
 			this->panelContainer->Controls->Add(this->gridViewResultado);
 			this->panelContainer->Controls->Add(this->iconoIgualdad);
 			this->panelContainer->Controls->Add(this->iconoOperacion);
@@ -333,19 +352,53 @@ namespace CppCLRWinformsProjekt {
 			this->panelContainer->TabIndex = 1;
 			this->panelContainer->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel2_Paint);
 			// 
+			// botonGuardarMatrizRes
+			// 
+			this->botonGuardarMatrizRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->botonGuardarMatrizRes->Location = System::Drawing::Point(688, 573);
+			this->botonGuardarMatrizRes->Name = L"botonGuardarMatrizRes";
+			this->botonGuardarMatrizRes->Size = System::Drawing::Size(84, 37);
+			this->botonGuardarMatrizRes->TabIndex = 14;
+			this->botonGuardarMatrizRes->Text = L"Guardar";
+			this->botonGuardarMatrizRes->UseVisualStyleBackColor = true;
+			this->botonGuardarMatrizRes->Visible = false;
+			this->botonGuardarMatrizRes->Click += gcnew System::EventHandler(this, &Form1::botonGuardarMatrizRes_Click);
+			// 
+			// textFileResultado
+			// 
+			this->textFileResultado->Location = System::Drawing::Point(442, 545);
+			this->textFileResultado->Name = L"textFileResultado";
+			this->textFileResultado->Size = System::Drawing::Size(330, 22);
+			this->textFileResultado->TabIndex = 13;
+			this->textFileResultado->Visible = false;
+			// 
+			// labelMatrizResultante
+			// 
+			this->labelMatrizResultante->AutoSize = true;
+			this->labelMatrizResultante->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->labelMatrizResultante->Location = System::Drawing::Point(438, 500);
+			this->labelMatrizResultante->Name = L"labelMatrizResultante";
+			this->labelMatrizResultante->Size = System::Drawing::Size(334, 23);
+			this->labelMatrizResultante->TabIndex = 12;
+			this->labelMatrizResultante->Text = L"Nombre de archivo para matriz resultante:";
+			this->labelMatrizResultante->Visible = false;
+			// 
 			// gridViewResultado
 			// 
 			this->gridViewResultado->AllowUserToAddRows = false;
 			this->gridViewResultado->AllowUserToDeleteRows = false;
 			this->gridViewResultado->AllowUserToResizeColumns = false;
 			this->gridViewResultado->AllowUserToResizeRows = false;
+			this->gridViewResultado->BackgroundColor = System::Drawing::Color::PaleTurquoise;
 			this->gridViewResultado->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->gridViewResultado->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->gridViewResultado->ColumnHeadersHeight = 29;
 			this->gridViewResultado->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->gridViewResultado->ColumnHeadersVisible = false;
 			this->gridViewResultado->Cursor = System::Windows::Forms::Cursors::Default;
-			this->gridViewResultado->Location = System::Drawing::Point(487, 276);
+			this->gridViewResultado->Location = System::Drawing::Point(487, 257);
 			this->gridViewResultado->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->gridViewResultado->MultiSelect = false;
 			this->gridViewResultado->Name = L"gridViewResultado";
@@ -360,7 +413,7 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewResultado->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
 			this->gridViewResultado->ShowCellToolTips = false;
 			this->gridViewResultado->ShowEditingIcon = false;
-			this->gridViewResultado->Size = System::Drawing::Size(251, 177);
+			this->gridViewResultado->Size = System::Drawing::Size(297, 177);
 			this->gridViewResultado->TabIndex = 11;
 			// 
 			// iconoIgualdad
@@ -391,6 +444,7 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewB->AllowUserToDeleteRows = false;
 			this->gridViewB->AllowUserToResizeColumns = false;
 			this->gridViewB->AllowUserToResizeRows = false;
+			this->gridViewB->BackgroundColor = System::Drawing::Color::PaleTurquoise;
 			this->gridViewB->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->gridViewB->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->gridViewB->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -411,7 +465,7 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewB->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
 			this->gridViewB->ShowCellToolTips = false;
 			this->gridViewB->ShowEditingIcon = false;
-			this->gridViewB->Size = System::Drawing::Size(251, 177);
+			this->gridViewB->Size = System::Drawing::Size(284, 177);
 			this->gridViewB->TabIndex = 8;
 			// 
 			// textPathnameB
@@ -419,6 +473,7 @@ namespace CppCLRWinformsProjekt {
 			this->textPathnameB->Location = System::Drawing::Point(442, 530);
 			this->textPathnameB->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textPathnameB->Name = L"textPathnameB";
+			this->textPathnameB->ReadOnly = true;
 			this->textPathnameB->Size = System::Drawing::Size(296, 22);
 			this->textPathnameB->TabIndex = 7;
 			// 
@@ -452,6 +507,7 @@ namespace CppCLRWinformsProjekt {
 			this->textPathnameA->Location = System::Drawing::Point(442, 231);
 			this->textPathnameA->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textPathnameA->Name = L"textPathnameA";
+			this->textPathnameA->ReadOnly = true;
 			this->textPathnameA->Size = System::Drawing::Size(296, 22);
 			this->textPathnameA->TabIndex = 4;
 			// 
@@ -472,6 +528,7 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewA->AllowUserToDeleteRows = false;
 			this->gridViewA->AllowUserToResizeColumns = false;
 			this->gridViewA->AllowUserToResizeRows = false;
+			this->gridViewA->BackgroundColor = System::Drawing::Color::PaleTurquoise;
 			this->gridViewA->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->gridViewA->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->gridViewA->ColumnHeadersHeight = 29;
@@ -493,7 +550,7 @@ namespace CppCLRWinformsProjekt {
 			this->gridViewA->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
 			this->gridViewA->ShowCellToolTips = false;
 			this->gridViewA->ShowEditingIcon = false;
-			this->gridViewA->Size = System::Drawing::Size(251, 177);
+			this->gridViewA->Size = System::Drawing::Size(284, 177);
 			this->gridViewA->TabIndex = 2;
 			// 
 			// botonAbrirMatrizA
@@ -515,11 +572,11 @@ namespace CppCLRWinformsProjekt {
 			this->labelGeneral->AutoSize = true;
 			this->labelGeneral->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelGeneral->Location = System::Drawing::Point(29, 18);
+			this->labelGeneral->Location = System::Drawing::Point(88, 36);
 			this->labelGeneral->Name = L"labelGeneral";
-			this->labelGeneral->Size = System::Drawing::Size(280, 45);
+			this->labelGeneral->Size = System::Drawing::Size(284, 45);
 			this->labelGeneral->TabIndex = 0;
-			this->labelGeneral->Text = L"Ingresar matrices";
+			this->labelGeneral->Text = L"Ingresar Matrices";
 			this->labelGeneral->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->labelGeneral->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
 			// 
@@ -529,7 +586,7 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::MenuHighlight;
+			this->panel1->BackColor = System::Drawing::Color::DarkTurquoise;
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
@@ -550,6 +607,240 @@ namespace CppCLRWinformsProjekt {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"CALCULADORA DE MATRICES";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// Column1
+			// 
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 50;
+			// 
+			// Column4
+			// 
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 50;
+			// 
+			// Column5
+			// 
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 50;
+			// 
+			// Column6
+			// 
+			this->Column6->MinimumWidth = 6;
+			this->Column6->Name = L"Column6";
+			this->Column6->Width = 50;
+			// 
+			// Column2
+			// 
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 50;
+			// 
+			// Column3
+			// 
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 50;
+			// 
+			// Column7
+			// 
+			this->Column7->MinimumWidth = 6;
+			this->Column7->Name = L"Column7";
+			this->Column7->Width = 50;
+			// 
+			// Column8
+			// 
+			this->Column8->MinimumWidth = 6;
+			this->Column8->Name = L"Column8";
+			this->Column8->Width = 50;
+			// 
+			// Column9
+			// 
+			this->Column9->MinimumWidth = 6;
+			this->Column9->Name = L"Column9";
+			this->Column9->Width = 50;
+			// 
+			// Column10
+			// 
+			this->Column10->MinimumWidth = 6;
+			this->Column10->Name = L"Column10";
+			this->Column10->Width = 50;
+			// 
+			// Column11
+			// 
+			this->Column11->MinimumWidth = 6;
+			this->Column11->Name = L"Column11";
+			this->Column11->Width = 50;
+			// 
+			// Column12
+			// 
+			this->Column12->MinimumWidth = 6;
+			this->Column12->Name = L"Column12";
+			this->Column12->Width = 50;
+			// 
+			// Column13
+			// 
+			this->Column13->MinimumWidth = 6;
+			this->Column13->Name = L"Column13";
+			this->Column13->Width = 50;
+			// 
+			// Column1B
+			// 
+			this->Column1B->MinimumWidth = 6;
+			this->Column1B->Name = L"Column1B";
+			this->Column1B->Width = 50;
+			// 
+			// Column4B
+			// 
+			this->Column4B->MinimumWidth = 6;
+			this->Column4B->Name = L"Column4B";
+			this->Column4B->Width = 50;
+			// 
+			// Column5B
+			// 
+			this->Column5B->MinimumWidth = 6;
+			this->Column5B->Name = L"Column5B";
+			this->Column5B->Width = 50;
+			// 
+			// Column6B
+			// 
+			this->Column6B->MinimumWidth = 6;
+			this->Column6B->Name = L"Column6B";
+			this->Column6B->Width = 50;
+			// 
+			// Column2B
+			// 
+			this->Column2B->MinimumWidth = 6;
+			this->Column2B->Name = L"Column2B";
+			this->Column2B->Width = 50;
+			// 
+			// Column3B
+			// 
+			this->Column3B->MinimumWidth = 6;
+			this->Column3B->Name = L"Column3B";
+			this->Column3B->Width = 50;
+			// 
+			// Column7B
+			// 
+			this->Column7B->MinimumWidth = 6;
+			this->Column7B->Name = L"Column7B";
+			this->Column7B->Width = 50;
+			// 
+			// Column8B
+			// 
+			this->Column8B->MinimumWidth = 6;
+			this->Column8B->Name = L"Column8B";
+			this->Column8B->Width = 50;
+			// 
+			// Column9B
+			// 
+			this->Column9B->MinimumWidth = 6;
+			this->Column9B->Name = L"Column9B";
+			this->Column9B->Width = 50;
+			// 
+			// Column10B
+			// 
+			this->Column10B->MinimumWidth = 6;
+			this->Column10B->Name = L"Column10B";
+			this->Column10B->Width = 50;
+			// 
+			// Column11B
+			// 
+			this->Column11B->MinimumWidth = 6;
+			this->Column11B->Name = L"Column11B";
+			this->Column11B->Width = 50;
+			// 
+			// Column12B
+			// 
+			this->Column12B->MinimumWidth = 6;
+			this->Column12B->Name = L"Column12B";
+			this->Column12B->Width = 50;
+			// 
+			// Column13B
+			// 
+			this->Column13B->MinimumWidth = 6;
+			this->Column13B->Name = L"Column13B";
+			this->Column13B->Width = 50;
+			// 
+			// Column1R
+			// 
+			this->Column1R->MinimumWidth = 6;
+			this->Column1R->Name = L"Column1R";
+			this->Column1R->Width = 50;
+			// 
+			// Column4R
+			// 
+			this->Column4R->MinimumWidth = 6;
+			this->Column4R->Name = L"Column4R";
+			this->Column4R->Width = 50;
+			// 
+			// Column5R
+			// 
+			this->Column5R->MinimumWidth = 6;
+			this->Column5R->Name = L"Column5R";
+			this->Column5R->Width = 50;
+			// 
+			// Column6R
+			// 
+			this->Column6R->MinimumWidth = 6;
+			this->Column6R->Name = L"Column6R";
+			this->Column6R->Width = 50;
+			// 
+			// Column2R
+			// 
+			this->Column2R->MinimumWidth = 6;
+			this->Column2R->Name = L"Column2R";
+			this->Column2R->Width = 50;
+			// 
+			// Column3R
+			// 
+			this->Column3R->MinimumWidth = 6;
+			this->Column3R->Name = L"Column3R";
+			this->Column3R->Width = 50;
+			// 
+			// Column7R
+			// 
+			this->Column7R->MinimumWidth = 6;
+			this->Column7R->Name = L"Column7R";
+			this->Column7R->Width = 50;
+			// 
+			// Column8R
+			// 
+			this->Column8R->MinimumWidth = 6;
+			this->Column8R->Name = L"Column8R";
+			this->Column8R->Width = 50;
+			// 
+			// Column9R
+			// 
+			this->Column9R->MinimumWidth = 6;
+			this->Column9R->Name = L"Column9R";
+			this->Column9R->Width = 50;
+			// 
+			// Column10R
+			// 
+			this->Column10R->MinimumWidth = 6;
+			this->Column10R->Name = L"Column10R";
+			this->Column10R->Width = 50;
+			// 
+			// Column11R
+			// 
+			this->Column11R->MinimumWidth = 6;
+			this->Column11R->Name = L"Column11R";
+			this->Column11R->Width = 50;
+			// 
+			// Column12R
+			// 
+			this->Column12R->MinimumWidth = 6;
+			this->Column12R->Name = L"Column12R";
+			this->Column12R->Width = 50;
+			// 
+			// Column13R
+			// 
+			this->Column13R->MinimumWidth = 6;
+			this->Column13R->Name = L"Column13R";
+			this->Column13R->Width = 50;
 			// 
 			// Form1
 			// 
@@ -573,57 +864,13 @@ namespace CppCLRWinformsProjekt {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-			//Inicializar Columnas Matrices
-			inicializarColumnasA();
-			inicializarColumnasB();
-			inicializarColumnasResultado();
+
 		}
 #pragma endregion
 	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
+		   //BOTÓN INGRESAR MATRICES
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->labelGeneral->Text = "Sumar Matrices";
-		this->iconoOperacion->Text = L"+";
-		this->iconoIgualdad->Text = L"=";
-		this->gridViewResultado->Rows->Clear();
-		this->gridViewResultado->Columns->Clear();
-		this->labelMatrizA->Visible = false;
-		this->textPathnameA->Visible = false;
-		this->botonAbrirMatrizA->Visible = false;
-		this->labelMatrizB->Visible = false;
-		this->textPathnameB->Visible = false;
-		this->botonAbrirMatrizB->Visible = false;
-
-		if (this->pathMatrixA == nullptr || this->pathMatrixB == nullptr) {
-			MessageBox::Show("Asegurese de seleccionar matrices\npara realizar operaciones");
-			return;
-		}
-
-		MatrixList A = obtenerMatriz(this->pathMatrixA);
-		MatrixList B = obtenerMatriz(this->pathMatrixB);
-
-		if (A.getM()== 0 || B.getM() == 0) { //validar que ambas matrices estén correctas para relizar operación
-			MessageBox::Show("Matrices no son válidas\nIngrese matriz nuevamente.");
-			return;
-		}
-
-		//Función que devuelve la suma de las matrices
-		MatrixList C = C.addition(A.getHead(), B.getHead(), A.getM(), A.getN(), B.getM(), B.getN());
-
-		//Mostrar nueva matriz con el resultado en pantalla
-		if (C.getM() == 0) {
-			MessageBox::Show("Dimensiones de matrices\n no son válidas.");
-			return;
-		}
-
-		llenarMatrizResultado(C); //si todo sale bien, llenar la matriz resultado con el resultado
-
-	}
-	private: System::Void panel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void botonIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->labelGeneral->Text = "Ingresar Matrices";
 
 		this->gridViewResultado->Rows->Clear();
@@ -638,6 +885,59 @@ namespace CppCLRWinformsProjekt {
 		this->labelMatrizB->Visible = 1;
 		this->textPathnameB->Visible = 1;
 		this->botonAbrirMatrizB->Visible = 1;
+
+		this->labelMatrizResultante->Visible = 0;
+		this->textFileResultado->Visible = 0;
+		this->botonGuardarMatrizRes->Visible = 0;
+	}
+	private: System::Void panel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+		   //BOTÓN SUMAR MATRICES
+	private: System::Void botonIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+		this->headResultado = nullptr;
+
+		if (this->pathMatrixA == nullptr || this->pathMatrixB == nullptr) {
+			MessageBox::Show("Asegurese de seleccionar matrices\npara realizar operaciones");
+			return;
+		}
+
+		if (this->A_m == 0 || this->B_n == 0) { //validar que ambas matrices estén correctas para relizar operación
+			MessageBox::Show("Matrices no son válidas\nIngrese matriz nuevamente.");
+			return;
+		}
+
+		//Función que devuelve la suma de las matrices
+		MatrixList C = C.addition(this->headMatrizA, this->headMatrizB, this->A_m, this->A_n, this->B_m, this->B_n);
+
+		//Mostrar nueva matriz con el resultado en pantalla
+		if (C.getM() == 0) {
+			MessageBox::Show("Dimensiones de matrices\n no son válidas.");
+			return;
+		}
+
+		this->labelGeneral->Text = "Sumar Matrices";
+		this->iconoOperacion->Text = L"+";
+		this->iconoIgualdad->Text = L"=";
+
+		this->labelMatrizA->Visible = false;
+		this->textPathnameA->Visible = false;
+		this->botonAbrirMatrizA->Visible = false;
+
+		this->labelMatrizB->Visible = false;
+		this->textPathnameB->Visible = false;
+		this->botonAbrirMatrizB->Visible = false;
+
+		this->labelMatrizResultante->Visible = true;
+		this->textFileResultado->Visible = true;
+		this->botonGuardarMatrizRes->Visible = true;
+
+		llenarMatrizResultado(C); //si todo sale bien, llenar la matriz resultado con el resultado
+
+		this->headResultado = C.getHead();
 
 	}
 	private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
@@ -697,8 +997,11 @@ namespace CppCLRWinformsProjekt {
 		this->gridViewA->Rows->Clear();
 		this->gridViewA->Columns->Clear();
 		this->pathMatrixA = nullptr;
+		this->headMatrizA = nullptr;
+		this->A_m = 0;
+		this->A_n = 0;
 
-		this->fileMatriz->Filter = "Txt Files (*.txt)|*.txt";
+		this->fileMatriz->Filter = "dat-file (*.dat) | *.dat";
 
 		if (fileMatriz->ShowDialog() == System::Windows::Forms::DialogResult::OK) { //validar que se seleccionara archivo
 			String^ pth = fileMatriz->FileName;
@@ -760,6 +1063,9 @@ namespace CppCLRWinformsProjekt {
 			//Inicializar valor de Matriz A para todo el programa
 			if (A.getM() > 0 && A.getN() > 0) {
 				this->pathMatrixA = pth;
+				this->headMatrizA = A.getHead();
+				this->A_m = A.getM();
+				this->A_n = A.getN();
 			}
 
 		}
@@ -779,8 +1085,11 @@ namespace CppCLRWinformsProjekt {
 		this->gridViewB->Rows->Clear();
 		this->gridViewB->Columns->Clear();
 		this->pathMatrixB = nullptr;
+		this->headMatrizB = nullptr;
+		this->B_m = 0;
+		this->B_n = 0;
 
-		this->fileMatriz->Filter = "Txt Files (*.txt)|*.txt";
+		this->fileMatriz->Filter = "dat-file (*.dat) | *.dat";
 
 		if (fileMatriz->ShowDialog() == System::Windows::Forms::DialogResult::OK) { //validar que se seleccionara archivo
 			String^ pth = fileMatriz->FileName;
@@ -842,19 +1151,29 @@ namespace CppCLRWinformsProjekt {
 			//Inicializar objeto de Matriz B para todo el programa
 			if (B.getM() > 0 && B.getN() > 0) {
 				this->pathMatrixB = pth;
+				this->headMatrizB = B.getHead();
+				this->B_m = B.getM();
+				this->B_n = B.getN();
 			}
 
 		}
 
 	}
+	private: System::Void botonGuardarMatrizRes_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	MatrixList obtenerMatriz(String^ path) {
-		std::string pathString;
+		String^ pathResultado = this->textFileResultado->Text;
 
-		MarshalString(path, pathString); //convertir la ubicación del archivo de String^ a string
-		MatrixList matrix = MatrixList::loadFile(pathString.c_str()); //cargar archivo en la lista enlazada
+		if (pathResultado != nullptr) {
+			std::string pathString;
 
-		return matrix;
+			MarshalString(pathResultado, pathString); //convertir la ubicación del archivo de String^ a string
+
+			if (MatrixList::createFile(this->headResultado, pathString.c_str())) {
+				MessageBox::Show("Archivo " + pathResultado + " creado exitosamente");
+			}
+			else
+				MessageBox::Show("Error al crear archivo " + pathResultado);
+		}
 	}
 
 	void llenarMatrizResultado(MatrixList C) {

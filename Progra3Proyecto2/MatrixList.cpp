@@ -157,7 +157,7 @@ void MatrixList::addElement(int _value) {
     Node* actual = head;
     Node* previo = actual->getRight();
 
-    if (counterN == 0 && counterM > 0) {
+    if ((counterN == 0 && counterM > 0) || n == 1) {
         while (actual->getDown() != nullptr) {
             actual = actual->getDown();
         }
@@ -321,7 +321,7 @@ MatrixList MatrixList::subtraction(Node* headA, Node* headB, int m_A, int n_A, i
 MatrixList MatrixList::multiplication(Node* headA, Node* headB, int m_A, int n_A, int m_B, int n_B) {
     MatrixList result(0, 0);
 
-    if (m_A != n_B || n_A != m_B) { //validate that they have the same dimension
+    if (n_A != m_B) { //validate that they have the same dimension
         cout << "Dimensiones no son validas" << endl;
         return result;
     }
