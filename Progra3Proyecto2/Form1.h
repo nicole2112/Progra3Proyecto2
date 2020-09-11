@@ -37,7 +37,7 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::Label^ labelMatrizResultante;
 
 	private: System::Windows::Forms::Label^ iconoOperacion;
-		 
+	private: System::Windows::Forms::Label^ iconoDetA;
 
 	public:
 		Form1(void)
@@ -225,6 +225,7 @@ private: System::Windows::Forms::Button^ botonSumar;
 			this->Column11R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column12R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column13R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->iconoDetA = (gcnew System::Windows::Forms::Label());
 			this->panelGeneral->SuspendLayout();
 			this->panelContainer->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gridViewResultado))->BeginInit();
@@ -330,6 +331,7 @@ private: System::Windows::Forms::Button^ botonSumar;
 			// panelContainer
 			// 
 			this->panelContainer->BackColor = System::Drawing::Color::PaleTurquoise;
+			this->panelContainer->Controls->Add(this->iconoDetA);
 			this->panelContainer->Controls->Add(this->botonGuardarMatrizRes);
 			this->panelContainer->Controls->Add(this->textFileResultado);
 			this->panelContainer->Controls->Add(this->labelMatrizResultante);
@@ -424,8 +426,9 @@ private: System::Windows::Forms::Button^ botonSumar;
 			this->iconoIgualdad->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->iconoIgualdad->Location = System::Drawing::Point(370, 347);
 			this->iconoIgualdad->Name = L"iconoIgualdad";
-			this->iconoIgualdad->Size = System::Drawing::Size(0, 46);
+			this->iconoIgualdad->Size = System::Drawing::Size(44, 46);
 			this->iconoIgualdad->TabIndex = 10;
+			this->iconoIgualdad->Text = L"=";
 			// 
 			// iconoOperacion
 			// 
@@ -842,6 +845,17 @@ private: System::Windows::Forms::Button^ botonSumar;
 			this->Column13R->Name = L"Column13R";
 			this->Column13R->Width = 50;
 			// 
+			// iconoDetA
+			// 
+			this->iconoDetA->AutoSize = true;
+			this->iconoDetA->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->iconoDetA->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->iconoDetA->Location = System::Drawing::Point(490, 347);
+			this->iconoDetA->Name = L"iconoDetA";
+			this->iconoDetA->Size = System::Drawing::Size(44, 46);
+			this->iconoDetA->TabIndex = 15;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -882,9 +896,13 @@ private: System::Windows::Forms::Button^ botonSumar;
 		this->labelMatrizA->Visible = 1;
 		this->textPathnameA->Visible = 1;
 		this->botonAbrirMatrizA->Visible = 1;
+
 		this->labelMatrizB->Visible = 1;
 		this->textPathnameB->Visible = 1;
 		this->botonAbrirMatrizB->Visible = 1;
+		this->gridViewB->Visible = 1;
+
+		this->iconoDetA->Visible = 0;
 
 		this->labelMatrizResultante->Visible = 0;
 		this->textFileResultado->Visible = 0;
@@ -898,6 +916,7 @@ private: System::Windows::Forms::Button^ botonSumar;
 	private: System::Void botonIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->gridViewResultado->Rows->Clear();
 		this->gridViewResultado->Columns->Clear();
+		this->textFileResultado->Clear();
 		this->headResultado = nullptr;
 
 		if (this->pathMatrixA == nullptr || this->pathMatrixB == nullptr) {
@@ -931,6 +950,9 @@ private: System::Windows::Forms::Button^ botonSumar;
 		this->textPathnameB->Visible = false;
 		this->botonAbrirMatrizB->Visible = false;
 
+		this->iconoDetA->Visible = false;
+
+		this->gridViewB->Visible = true;
 		this->labelMatrizResultante->Visible = true;
 		this->textFileResultado->Visible = true;
 		this->botonGuardarMatrizRes->Visible = true;
@@ -940,66 +962,171 @@ private: System::Windows::Forms::Button^ botonSumar;
 		this->headResultado = C.getHead();
 
 	}
+		   //BOTÓN RESTAR MATRICES
 	private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
-		this->labelGeneral->Text = "Restar Matrices";
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+		this->textFileResultado->Clear();
+		this->headResultado = nullptr;
 
+		if (this->pathMatrixA == nullptr || this->pathMatrixB == nullptr) {
+			MessageBox::Show("Asegurese de seleccionar matrices\npara realizar operaciones");
+			return;
+		}
+
+		if (this->A_m == 0 || this->B_n == 0) { //validar que ambas matrices estén correctas para relizar operación
+			MessageBox::Show("Matrices no son válidas\nIngrese matriz nuevamente.");
+			return;
+		}
+
+		//Función que devuelve la resta de las matrices
+		MatrixList C = C.subtraction(this->headMatrizA, this->headMatrizB, this->A_m, this->A_n, this->B_m, this->B_n);
+
+		//Mostrar nueva matriz con el resultado en pantalla
+		if (C.getM() == 0) {
+			MessageBox::Show("Dimensiones de matrices\n no son válidas.");
+			return;
+		}
+
+		this->labelGeneral->Text = "Restar Matrices";
 		this->iconoOperacion->Text = L"-";
 		this->iconoIgualdad->Text = L"=";
 
-		this->gridViewResultado->Rows->Clear();
-		this->gridViewResultado->Columns->Clear();
-
 		this->labelMatrizA->Visible = false;
 		this->textPathnameA->Visible = false;
 		this->botonAbrirMatrizA->Visible = false;
+
 		this->labelMatrizB->Visible = false;
 		this->textPathnameB->Visible = false;
 		this->botonAbrirMatrizB->Visible = false;
+
+		this->iconoDetA->Visible = false;
+
+		this->gridViewB->Visible = true;
+		this->labelMatrizResultante->Visible = true;
+		this->textFileResultado->Visible = true;
+		this->botonGuardarMatrizRes->Visible = true;
+
+		llenarMatrizResultado(C); //si todo sale bien, llenar la matriz resultado con el resultado
+
+		this->headResultado = C.getHead();
+
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+		   //BOTÓN PARA MULTIPLICAR MATRICES
 	private: System::Void botonMultiplicar_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->labelGeneral->Text = "Multiplicar Matrices";
-
-		this->iconoOperacion->Text = L"x";
-		this->iconoIgualdad->Text = L"=";
-
 		this->gridViewResultado->Rows->Clear();
 		this->gridViewResultado->Columns->Clear();
+		this->textFileResultado->Clear();
+		this->headResultado = nullptr;
+
+		if (this->pathMatrixA == nullptr || this->pathMatrixB == nullptr) {
+			MessageBox::Show("Asegurese de seleccionar matrices\npara realizar operaciones.");
+			return;
+		}
+
+		if (this->A_m == 0 || this->B_n == 0) { //validar que ambas matrices estén correctas para relizar operación
+			MessageBox::Show("Matrices no son válidas\nIngrese matriz nuevamente.");
+			return;
+		}
+
+		//Función que devuelve la multiplicación de las matrices
+		MatrixList C = C.multiplication(this->headMatrizA, this->headMatrizB, this->A_m, this->A_n, this->B_m, this->B_n);
+
+		//Mostrar nueva matriz con el resultado en pantalla
+		if (C.getM() == 0) {
+			MessageBox::Show("Dimensiones de matrices\n no son válidas.");
+			return;
+		}
+
+		this->labelGeneral->Text = "Multiplicar Matrices";
+		this->iconoOperacion->Text = L"x";
+		this->iconoIgualdad->Text = L"=";
 
 		this->labelMatrizA->Visible = false;
 		this->textPathnameA->Visible = false;
 		this->botonAbrirMatrizA->Visible = false;
+
 		this->labelMatrizB->Visible = false;
 		this->textPathnameB->Visible = false;
 		this->botonAbrirMatrizB->Visible = false;
+
+		this->iconoDetA->Visible = false;
+
+		this->gridViewB->Visible = true;
+		this->labelMatrizResultante->Visible = true;
+		this->textFileResultado->Visible = true;
+		this->botonGuardarMatrizRes->Visible = true;
+
+		llenarMatrizResultado(C); //si todo sale bien, llenar la matriz resultado con el resultado
+
+		this->headResultado = C.getHead();
 	}
+		   //BOTÓN DETERMINANTE DE MATRIZ A
 	private: System::Void botonDeterminante_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->gridViewResultado->Rows->Clear();
+		this->gridViewResultado->Columns->Clear();
+		this->textFileResultado->Clear();
+		this->headResultado = nullptr;
+
+		if (this->pathMatrixA == nullptr) {
+			MessageBox::Show("Asegurese de seleccionar matrices\npara realizar operaciones.");
+			return;
+		}
+
+		if (this->A_m == 0) { //validar que ambas matrices estén correctas para relizar operación
+			MessageBox::Show("Matriz no es válida\nIngrese matriz nuevamente.");
+			return;
+		}
+
+		if (this->A_m != this->A_n) { //cuand
+			MessageBox::Show("Matriz A no es cuadrada,\nno se puede calcular determinante.");
+			return;
+		}
+
+		//Función que devuelve el determinante de la matriz A
+		MatrixList C;
+		int determinantA = C.determinant(this->headMatrizA, this->A_m, this->A_n);
+
+		//Mostrar el resultado en pantalla
 		this->labelGeneral->Text = "Determinante de Matriz";
 
 		this->iconoOperacion->Text = L"det A";
 		this->iconoIgualdad->Text = L"=";
-
-		this->gridViewResultado->Rows->Clear();
-		this->gridViewResultado->Columns->Clear();
+		
+		this->iconoDetA->Visible = true;
+		std::string detString = std::to_string(determinantA);
+		String^ det = gcnew String(detString.c_str());
+		this->iconoDetA->Text = det;
 
 		this->labelMatrizA->Visible = false;
 		this->textPathnameA->Visible = false;
 		this->botonAbrirMatrizA->Visible = false;
+
 		this->labelMatrizB->Visible = false;
 		this->textPathnameB->Visible = false;
 		this->botonAbrirMatrizB->Visible = false;
+		this->gridViewB->Visible = false;
+
+		this->labelMatrizResultante->Visible = false;
+		this->textFileResultado->Visible = false;
+		this->botonGuardarMatrizRes->Visible = false;
 
 	}
+		   //BOTÓN PARA SELECCIONAR ARCHIVO MATRIZ A
 	private: System::Void botonAbrirArchivo_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Limpar matrices y texto con ubicación de archivo
 		this->textPathnameA->Clear();
 		this->gridViewA->Rows->Clear();
 		this->gridViewA->Columns->Clear();
+
 		this->pathMatrixA = nullptr;
 		this->headMatrizA = nullptr;
 		this->A_m = 0;
 		this->A_n = 0;
+
+		this->textFileResultado->Clear();
 
 		this->fileMatriz->Filter = "dat-file (*.dat) | *.dat";
 
@@ -1071,23 +1198,20 @@ private: System::Windows::Forms::Button^ botonSumar;
 		}
 
 	}
-	void MarshalString(String^ s, std::string& os) {
-		using namespace Runtime::InteropServices;
-		const char* chars =
-			(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-		os = chars;
-		Marshal::FreeHGlobal(IntPtr((void*)chars));
-	}
-
+	
+			//BOTÓN PARA SELECCIONAR ARCHIVO DE MATRIZ B
 	private: System::Void button1_Click_3(System::Object^ sender, System::EventArgs^ e) {
 		//Limpar matrices y texto con ubicación de archivo
 		this->textPathnameB->Clear();
 		this->gridViewB->Rows->Clear();
 		this->gridViewB->Columns->Clear();
+
 		this->pathMatrixB = nullptr;
 		this->headMatrizB = nullptr;
 		this->B_m = 0;
 		this->B_n = 0;
+
+		this->textFileResultado->Clear();
 
 		this->fileMatriz->Filter = "dat-file (*.dat) | *.dat";
 
@@ -1174,6 +1298,14 @@ private: System::Windows::Forms::Button^ botonSumar;
 			else
 				MessageBox::Show("Error al crear archivo " + pathResultado);
 		}
+	}
+
+	void MarshalString(String^ s, std::string& os) {
+		using namespace Runtime::InteropServices;
+		const char* chars =
+			(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+		os = chars;
+		Marshal::FreeHGlobal(IntPtr((void*)chars));
 	}
 
 	void llenarMatrizResultado(MatrixList C) {
