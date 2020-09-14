@@ -15,11 +15,11 @@ private:
 
 	bool isEmpty();
 
-	int squareDeterminant(Node*, Node*);
-	int squareDeterminant2(Node*, Node*, int, int);
+	double squareDeterminant(Node*, Node*);
+	double squareDeterminant2(Node*, Node*, int, int);
 
-	int squareDeterminantLaplaceRec(Node*, int);
-	int squareDeterminantLaplace(Node*, int, int);
+	double squareDeterminantLaplaceRec(Node*, int);
+	double squareDeterminantLaplace(Node*, int, int);
 
 public:
 	//constructor
@@ -43,7 +43,7 @@ public:
 	MatrixList addition(Node*, Node*, int, int, int, int);
 	MatrixList subtraction(Node*, Node*, int, int, int, int);
 	MatrixList multiplication(Node*, Node*, int, int, int, int);
-	int determinant(Node*, int, int);
+	double determinant(Node*, int, int);
 
 	static MatrixList loadFile(const char*);
 	static bool createFile(Node*, const char*);

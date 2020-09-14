@@ -366,19 +366,19 @@ MatrixList MatrixList::multiplication(Node* headA, Node* headB, int m_A, int n_A
 }
 
 //Function for returning determinant based in the dimension of the matrix
-int MatrixList::determinant(Node* headA, int m, int n) {
+double MatrixList::determinant(Node* headA, int m, int n) {
     if (m != n) {
         cout << "Matriz es cuadrada, no se puede calcular determinante" << endl;
         return 0;
     }
 
-    int det = headA->getValue();
+    double det = headA->getValue();
     if (m == n && m == 2) { //matrix 2x2
         det = squareDeterminant(headA, nullptr) - (headA->getDown()->getValue() * headA->getRight()->getValue());
     }
     else if (m == n && m == 3) { //matrix 3x3
-        int a = squareDeterminant(headA, nullptr) + squareDeterminant(headA->getRight(), headA) + squareDeterminant(headA->getRight()->getRight(), headA);
-        int b = squareDeterminant2(headA, headA, 2, 2) + squareDeterminant2(headA, headA, 1, 1) + squareDeterminant2(headA, headA, 0, 0);
+        double a = squareDeterminant(headA, nullptr) + squareDeterminant(headA->getRight(), headA) + squareDeterminant(headA->getRight()->getRight(), headA);
+        double b = squareDeterminant2(headA, headA, 2, 2) + squareDeterminant2(headA, headA, 1, 1) + squareDeterminant2(headA, headA, 0, 0);
         det = a - b;
     }
     else if (m == n && m >= 4) { //matrix 4x4 and more...
@@ -388,7 +388,7 @@ int MatrixList::determinant(Node* headA, int m, int n) {
 }
 
 //First part of determinant for 2x2 and 3x3 matrix
-int MatrixList::squareDeterminant(Node* headA, Node* head2) {
+double MatrixList::squareDeterminant(Node* headA, Node* head2) {
 
     if (headA->getDown() == nullptr) //case base
         return headA->getValue();
@@ -404,7 +404,7 @@ int MatrixList::squareDeterminant(Node* headA, Node* head2) {
 }
 
 //Second part of determinant for 3x3 matrix
-int MatrixList::squareDeterminant2(Node* head, Node* actual, int counter, int counter2) {
+double MatrixList::squareDeterminant2(Node* head, Node* actual, int counter, int counter2) {
 
     if (counter == 0 && actual->getRight() == nullptr) //case base
         return actual->getValue();
@@ -422,8 +422,8 @@ int MatrixList::squareDeterminant2(Node* head, Node* actual, int counter, int co
 }
 
 //Determinant for 4x4 matrix or more
-int MatrixList::squareDeterminantLaplaceRec(Node* head, int m) {
-    int determinant = 0;
+double MatrixList::squareDeterminantLaplaceRec(Node* head, int m) {
+    double determinant = 0;
 
     Node* cofactor = head;
     int column = 0;
@@ -442,9 +442,9 @@ int MatrixList::squareDeterminantLaplaceRec(Node* head, int m) {
     return determinant;
 }
 
-int MatrixList::squareDeterminantLaplace(Node* _head, int colCofactor, int _m) {
+double MatrixList::squareDeterminantLaplace(Node* _head, int colCofactor, int _m) {
     MatrixList A(_m, _m);
-    int det = 0;
+    double det = 0;
 
     Node* actual;
     int colActual;

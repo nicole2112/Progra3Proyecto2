@@ -848,10 +848,10 @@ private: System::Windows::Forms::Button^ botonSumar;
 			// iconoDetA
 			// 
 			this->iconoDetA->AutoSize = true;
-			this->iconoDetA->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->iconoDetA->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->iconoDetA->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->iconoDetA->Location = System::Drawing::Point(490, 347);
+			this->iconoDetA->Location = System::Drawing::Point(430, 347);
 			this->iconoDetA->Name = L"iconoDetA";
 			this->iconoDetA->Size = System::Drawing::Size(44, 46);
 			this->iconoDetA->TabIndex = 15;
@@ -1087,7 +1087,7 @@ private: System::Windows::Forms::Button^ botonSumar;
 
 		//Función que devuelve el determinante de la matriz A
 		MatrixList C;
-		int determinantA = C.determinant(this->headMatrizA, this->A_m, this->A_n);
+		double determinantA = C.determinant(this->headMatrizA, this->A_m, this->A_n);
 
 		//Mostrar el resultado en pantalla
 		this->labelGeneral->Text = "Determinante de Matriz";
