@@ -15,6 +15,8 @@ private:
 
 	bool isEmpty();
 
+	double determinant(Node*, int, int);
+
 	double squareDeterminant(Node*, Node*);
 	double squareDeterminant2(Node*, Node*, int, int);
 
@@ -43,7 +45,7 @@ public:
 	MatrixList addition(Node*, Node*, int, int, int, int);
 	MatrixList subtraction(Node*, Node*, int, int, int, int);
 	MatrixList multiplication(Node*, Node*, int, int, int, int);
-	double determinant(Node*, int, int);
+	double determinantPublic(Node*, int, int);
 
 	static MatrixList loadFile(const char*);
 	static bool createFile(Node*, const char*);

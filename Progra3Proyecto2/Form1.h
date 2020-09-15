@@ -772,7 +772,7 @@ private: System::Windows::Forms::Button^ botonSumar;
 
 		//Función que devuelve el determinante de la matriz A
 		MatrixList C;
-		double determinantA = C.determinant(this->headMatrizA, this->A_m, this->A_n);
+		double determinantA = C.determinantPublic(this->headMatrizA, this->A_m, this->A_n);
 
 		//Mostrar el resultado en pantalla
 		this->labelGeneral->Text = "Determinante de Matriz";

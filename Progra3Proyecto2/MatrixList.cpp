@@ -146,52 +146,54 @@ bool MatrixList::createFile(Node* _head, const char* pathname) {
 }
 
 void MatrixList::addElement(int _value) {
-    Node* newNode = new Node(_value, nullptr, nullptr);
+    
+        Node* newNode = new Node(_value, nullptr, nullptr);
 
-    if (isEmpty()) { //when the list is empty
-        head = newNode;
-        counterN++;
-        return;
-    }
-
-    Node* actual = head;
-    Node* previo = actual->getRight();
-
-    if ((counterN == 0 && counterM > 0) || n == 1) {
-        while (actual->getDown() != nullptr) {
-            actual = actual->getDown();
+        if (isEmpty()) { //when the list is empty
+            head = newNode;
+            counterN++;
+            return;
         }
-        actual->setDown(newNode);
+
+        Node* actual = head;
+        Node* previo = actual->getRight();
+
+        if ((counterN == 0 && counterM > 0) || n == 1) {
+            while (actual->getDown() != nullptr) {
+                actual = actual->getDown();
+            }
+            actual->setDown(newNode);
+            counterN++;
+            return;
+        }
+
+        //Ubicar los apuntadores de previo y actual donde deben
+        int i = counterM;
+        while (i > 0) { //settear valores previo y actuales acorde a la fila
+            if (i == 1)
+                previo = actual->getRight();
+            actual = actual->getDown();
+            i--;
+        }
+
+        while (actual->getRight() != nullptr) { //llenar las columnas de fila indicada
+            if (counterM > 0)
+                previo = previo->getRight();
+
+            actual = actual->getRight();
+        }
+
+        if (counterM > 0) //Add new node
+            previo->setDown(newNode);
+        actual->setRight(newNode);
+
         counterN++;
-        return;
-    }
 
-    //Ubicar los apuntadores de previo y actual donde deben
-    int i = counterM;
-    while (i > 0) { //settear valores previo y actuales acorde a la fila
-        if (i == 1)
-            previo = actual->getRight();
-        actual = actual->getDown();
-        i--;
-    }
+        if (counterN == n) { //Reset values when reaching limit
+            counterM++;
+            counterN = 0;
+        }
 
-    while (actual->getRight() != nullptr) { //llenar las columnas de fila indicada
-        if (counterM > 0)
-            previo = previo->getRight();
-
-        actual = actual->getRight();
-    }
-
-    if (counterM > 0) //Add new node
-        previo->setDown(newNode);
-    actual->setRight(newNode);
-
-    counterN++;
-
-    if (counterN == n) { //Reset values when reaching limit
-        counterM++;
-        counterN = 0;
-    }
 
 }
 
@@ -365,6 +367,24 @@ MatrixList MatrixList::multiplication(Node* headA, Node* headB, int m_A, int n_A
     return result;
 }
 
+
+double MatrixList::determinantPublic(Node* headA, int m, int n) {
+    // Reserve 16K of memory that can be deleted just in case we run out of memory
+    char* _emergencyMemory = new char[16384];
+
+    try{
+        return determinant(headA, m, n);
+
+    }
+    catch (System::OutOfMemoryException^ e) {
+        // Delete the reserved memory so we can print an error message before exiting
+        delete _emergencyMemory;
+
+        System::Windows::Forms::MessageBox::Show("Espacio en memoria lleno, \naplicativo se cerrará.");
+        exit(1);
+    }
+}
+
 //Function for returning determinant based in the dimension of the matrix
 double MatrixList::determinant(Node* headA, int m, int n) {
     if (m != n) {
@@ -430,11 +450,18 @@ double MatrixList::squareDeterminantLaplaceRec(Node* head, int m) {
 
     while (cofactor != nullptr) { //se repite para formar cada matriz de cofactores
 
-        if (column % 2 == 0) //si es par se suma
-            determinant += cofactor->getValue() * squareDeterminantLaplace(head->getDown(), column, m - 1);
-        else //si es impar se resta
-            determinant -= cofactor->getValue() * squareDeterminantLaplace(head->getDown(), column, m - 1);
-
+        if (column % 2 == 0) { //si es par se suma
+            if (cofactor->getValue() == 0)
+                determinant += 0;
+            else
+                determinant += cofactor->getValue() * squareDeterminantLaplace(head->getDown(), column, m - 1);
+        }
+        else { //si es impar se resta
+            if (cofactor->getValue() == 0)
+                determinant -= 0;
+            else
+                determinant -= cofactor->getValue() * squareDeterminantLaplace(head->getDown(), column, m - 1);
+        }
         cofactor = cofactor->getRight();
         column++;
     }
