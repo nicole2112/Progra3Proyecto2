@@ -86,49 +86,6 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ label2;
-		   //MATRIZ A
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column13;
-		   //MATRIZ B
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12B;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column13B;
-		   //MATRIZ RESULTADO
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12R;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column13R;
-
 	private: System::Windows::Forms::TextBox^ textPathnameB;
 	private: System::Windows::Forms::Label^ labelMatrizB;
 
@@ -186,45 +143,6 @@ private: System::Windows::Forms::Button^ botonSumar;
 			this->fileMatriz = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column11 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column12 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column13 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column1B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column7B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column8B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column9B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column10B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column11B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column12B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column13B = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column1R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column7R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column8R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column9R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column10R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column11R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column12R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column13R = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->iconoDetA = (gcnew System::Windows::Forms::Label());
 			this->panelGeneral->SuspendLayout();
 			this->panelContainer->SuspendLayout();
@@ -610,240 +528,7 @@ private: System::Windows::Forms::Button^ botonSumar;
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"CALCULADORA DE MATRICES";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// Column1
-			// 
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 50;
-			// 
-			// Column4
-			// 
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 50;
-			// 
-			// Column5
-			// 
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 50;
-			// 
-			// Column6
-			// 
-			this->Column6->MinimumWidth = 6;
-			this->Column6->Name = L"Column6";
-			this->Column6->Width = 50;
-			// 
-			// Column2
-			// 
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 50;
-			// 
-			// Column3
-			// 
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 50;
-			// 
-			// Column7
-			// 
-			this->Column7->MinimumWidth = 6;
-			this->Column7->Name = L"Column7";
-			this->Column7->Width = 50;
-			// 
-			// Column8
-			// 
-			this->Column8->MinimumWidth = 6;
-			this->Column8->Name = L"Column8";
-			this->Column8->Width = 50;
-			// 
-			// Column9
-			// 
-			this->Column9->MinimumWidth = 6;
-			this->Column9->Name = L"Column9";
-			this->Column9->Width = 50;
-			// 
-			// Column10
-			// 
-			this->Column10->MinimumWidth = 6;
-			this->Column10->Name = L"Column10";
-			this->Column10->Width = 50;
-			// 
-			// Column11
-			// 
-			this->Column11->MinimumWidth = 6;
-			this->Column11->Name = L"Column11";
-			this->Column11->Width = 50;
-			// 
-			// Column12
-			// 
-			this->Column12->MinimumWidth = 6;
-			this->Column12->Name = L"Column12";
-			this->Column12->Width = 50;
-			// 
-			// Column13
-			// 
-			this->Column13->MinimumWidth = 6;
-			this->Column13->Name = L"Column13";
-			this->Column13->Width = 50;
-			// 
-			// Column1B
-			// 
-			this->Column1B->MinimumWidth = 6;
-			this->Column1B->Name = L"Column1B";
-			this->Column1B->Width = 50;
-			// 
-			// Column4B
-			// 
-			this->Column4B->MinimumWidth = 6;
-			this->Column4B->Name = L"Column4B";
-			this->Column4B->Width = 50;
-			// 
-			// Column5B
-			// 
-			this->Column5B->MinimumWidth = 6;
-			this->Column5B->Name = L"Column5B";
-			this->Column5B->Width = 50;
-			// 
-			// Column6B
-			// 
-			this->Column6B->MinimumWidth = 6;
-			this->Column6B->Name = L"Column6B";
-			this->Column6B->Width = 50;
-			// 
-			// Column2B
-			// 
-			this->Column2B->MinimumWidth = 6;
-			this->Column2B->Name = L"Column2B";
-			this->Column2B->Width = 50;
-			// 
-			// Column3B
-			// 
-			this->Column3B->MinimumWidth = 6;
-			this->Column3B->Name = L"Column3B";
-			this->Column3B->Width = 50;
-			// 
-			// Column7B
-			// 
-			this->Column7B->MinimumWidth = 6;
-			this->Column7B->Name = L"Column7B";
-			this->Column7B->Width = 50;
-			// 
-			// Column8B
-			// 
-			this->Column8B->MinimumWidth = 6;
-			this->Column8B->Name = L"Column8B";
-			this->Column8B->Width = 50;
-			// 
-			// Column9B
-			// 
-			this->Column9B->MinimumWidth = 6;
-			this->Column9B->Name = L"Column9B";
-			this->Column9B->Width = 50;
-			// 
-			// Column10B
-			// 
-			this->Column10B->MinimumWidth = 6;
-			this->Column10B->Name = L"Column10B";
-			this->Column10B->Width = 50;
-			// 
-			// Column11B
-			// 
-			this->Column11B->MinimumWidth = 6;
-			this->Column11B->Name = L"Column11B";
-			this->Column11B->Width = 50;
-			// 
-			// Column12B
-			// 
-			this->Column12B->MinimumWidth = 6;
-			this->Column12B->Name = L"Column12B";
-			this->Column12B->Width = 50;
-			// 
-			// Column13B
-			// 
-			this->Column13B->MinimumWidth = 6;
-			this->Column13B->Name = L"Column13B";
-			this->Column13B->Width = 50;
-			// 
-			// Column1R
-			// 
-			this->Column1R->MinimumWidth = 6;
-			this->Column1R->Name = L"Column1R";
-			this->Column1R->Width = 50;
-			// 
-			// Column4R
-			// 
-			this->Column4R->MinimumWidth = 6;
-			this->Column4R->Name = L"Column4R";
-			this->Column4R->Width = 50;
-			// 
-			// Column5R
-			// 
-			this->Column5R->MinimumWidth = 6;
-			this->Column5R->Name = L"Column5R";
-			this->Column5R->Width = 50;
-			// 
-			// Column6R
-			// 
-			this->Column6R->MinimumWidth = 6;
-			this->Column6R->Name = L"Column6R";
-			this->Column6R->Width = 50;
-			// 
-			// Column2R
-			// 
-			this->Column2R->MinimumWidth = 6;
-			this->Column2R->Name = L"Column2R";
-			this->Column2R->Width = 50;
-			// 
-			// Column3R
-			// 
-			this->Column3R->MinimumWidth = 6;
-			this->Column3R->Name = L"Column3R";
-			this->Column3R->Width = 50;
-			// 
-			// Column7R
-			// 
-			this->Column7R->MinimumWidth = 6;
-			this->Column7R->Name = L"Column7R";
-			this->Column7R->Width = 50;
-			// 
-			// Column8R
-			// 
-			this->Column8R->MinimumWidth = 6;
-			this->Column8R->Name = L"Column8R";
-			this->Column8R->Width = 50;
-			// 
-			// Column9R
-			// 
-			this->Column9R->MinimumWidth = 6;
-			this->Column9R->Name = L"Column9R";
-			this->Column9R->Width = 50;
-			// 
-			// Column10R
-			// 
-			this->Column10R->MinimumWidth = 6;
-			this->Column10R->Name = L"Column10R";
-			this->Column10R->Width = 50;
-			// 
-			// Column11R
-			// 
-			this->Column11R->MinimumWidth = 6;
-			this->Column11R->Name = L"Column11R";
-			this->Column11R->Width = 50;
-			// 
-			// Column12R
-			// 
-			this->Column12R->MinimumWidth = 6;
-			this->Column12R->Name = L"Column12R";
-			this->Column12R->Width = 50;
-			// 
-			// Column13R
-			// 
-			this->Column13R->MinimumWidth = 6;
-			this->Column13R->Name = L"Column13R";
-			this->Column13R->Width = 50;
+			
 			// 
 			// iconoDetA
 			// 
@@ -1144,36 +829,26 @@ private: System::Windows::Forms::Button^ botonSumar;
 				return;
 			}
 
+			//Inicializar valor de Matriz A para todo el programa
+			if (A.getM() > 0 && A.getN() > 0) {
+				this->pathMatrixA = pth;
+				this->headMatrizA = A.getHead();
+				this->A_m = A.getM();
+				this->A_n = A.getN();
+			}
+
 			this->textPathnameA->Text = pth;
+
+			//inicializarColumnasA();
 
 			//----Ingresar columnas-----
 			for (int i = 0; i < A.getN(); i++) { //cargar en gridview la cantidad de columnas acorde a la matriz A
-				if (i == 0)
-					this->gridViewA->Columns->Add(this->Column1);
-				if (i == 1)
-					this->gridViewA->Columns->Add(this->Column2);
-				if (i == 2)
-					this->gridViewA->Columns->Add(this->Column3);
-				if (i == 3)
-					this->gridViewA->Columns->Add(this->Column4);
-				if (i == 4)
-					this->gridViewA->Columns->Add(this->Column5);
-				if (i == 5)
-					this->gridViewA->Columns->Add(this->Column6);
-				if (i == 6)
-					this->gridViewA->Columns->Add(this->Column7);
-				if (i == 7)
-					this->gridViewA->Columns->Add(this->Column8);
-				if (i == 8)
-					this->gridViewA->Columns->Add(this->Column9);
-				if (i == 9)
-					this->gridViewA->Columns->Add(this->Column10);
-				if (i == 10)
-					this->gridViewA->Columns->Add(this->Column11);
-				if (i == 11)
-					this->gridViewA->Columns->Add(this->Column12);
-				if (i == 12)
-					this->gridViewA->Columns->Add(this->Column13);
+				System::Windows::Forms::DataGridViewTextBoxColumn^ columna = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				columna->Name = "ColumnaA" + (i + 1);
+				columna->Width = 50;
+
+				//agregar columna al gridview A
+				this->gridViewA->Columns->Add(columna);
 			}
 
 			array<Object^>^ rowsVals = gcnew array<Object^>(A.getN());
@@ -1187,13 +862,6 @@ private: System::Windows::Forms::Button^ botonSumar;
 				this->gridViewA->Rows->Add(rowsVals); //mostrar cada fila en la matriz con valores ingresados
 			}
 
-			//Inicializar valor de Matriz A para todo el programa
-			if (A.getM() > 0 && A.getN() > 0) {
-				this->pathMatrixA = pth;
-				this->headMatrizA = A.getHead();
-				this->A_m = A.getM();
-				this->A_n = A.getN();
-			}
 
 		}
 
@@ -1233,32 +901,12 @@ private: System::Windows::Forms::Button^ botonSumar;
 
 			//----Ingresar columnas-----
 			for (int i = 0; i < B.getN(); i++) { //cargar en gridview la cantidad de columnas acorde a la matriz A
-				if (i == 0)
-					this->gridViewB->Columns->Add(this->Column1B);
-				if (i == 1)
-					this->gridViewB->Columns->Add(this->Column2B);
-				if (i == 2)
-					this->gridViewB->Columns->Add(this->Column3B);
-				if (i == 3)
-					this->gridViewB->Columns->Add(this->Column4B);
-				if (i == 4)
-					this->gridViewB->Columns->Add(this->Column5B);
-				if (i == 5)
-					this->gridViewB->Columns->Add(this->Column6B);
-				if (i == 6)
-					this->gridViewB->Columns->Add(this->Column7B);
-				if (i == 7)
-					this->gridViewB->Columns->Add(this->Column8B);
-				if (i == 8)
-					this->gridViewB->Columns->Add(this->Column9B);
-				if (i == 9)
-					this->gridViewB->Columns->Add(this->Column10B);
-				if (i == 10)
-					this->gridViewB->Columns->Add(this->Column11B);
-				if (i == 11)
-					this->gridViewB->Columns->Add(this->Column12B);
-				if (i == 12)
-					this->gridViewB->Columns->Add(this->Column13B);
+				System::Windows::Forms::DataGridViewTextBoxColumn^ columna = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				columna->Name = "ColumnaB" + (i + 1);
+				columna->Width = 50;
+
+				//agregar columna al gridview A
+				this->gridViewB->Columns->Add(columna);
 			}
 
 			array<Object^>^ rowsVals = gcnew array<Object^>(B.getN());
@@ -1309,34 +957,15 @@ private: System::Windows::Forms::Button^ botonSumar;
 	}
 
 	void llenarMatrizResultado(MatrixList C) {
+
 		//----Ingresar columnas-----
 		for (int i = 0; i < C.getN(); i++) { //cargar en gridview la cantidad de columnas acorde a la matriz A
-			if (i == 0)
-				this->gridViewResultado->Columns->Add(this->Column1R);
-			if (i == 1)
-				this->gridViewResultado->Columns->Add(this->Column2R);
-			if (i == 2)
-				this->gridViewResultado->Columns->Add(this->Column3R);
-			if (i == 3)
-				this->gridViewResultado->Columns->Add(this->Column4R);
-			if (i == 4)
-				this->gridViewResultado->Columns->Add(this->Column5R);
-			if (i == 5)
-				this->gridViewResultado->Columns->Add(this->Column6R);
-			if (i == 6)
-				this->gridViewResultado->Columns->Add(this->Column7R);
-			if (i == 7)
-				this->gridViewResultado->Columns->Add(this->Column8R);
-			if (i == 8)
-				this->gridViewResultado->Columns->Add(this->Column9R);
-			if (i == 9)
-				this->gridViewResultado->Columns->Add(this->Column10R);
-			if (i == 10)
-				this->gridViewResultado->Columns->Add(this->Column11R);
-			if (i == 11)
-				this->gridViewResultado->Columns->Add(this->Column12R);
-			if (i == 12)
-				this->gridViewResultado->Columns->Add(this->Column13R);
+			System::Windows::Forms::DataGridViewTextBoxColumn^ columna = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			columna->Name = "ColumnaR" + (i + 1);
+			columna->Width = 50;
+
+			//agregar columna al gridview A
+			this->gridViewResultado->Columns->Add(columna);
 		}
 
 		array<Object^>^ rowsVals = gcnew array<Object^>(C.getN());
@@ -1351,319 +980,5 @@ private: System::Windows::Forms::Button^ botonSumar;
 		}
 	}
 
-    void inicializarColumnasA() {
-		// Column1
-			// 
-		this->Column1->FillWeight = 50;
-		this->Column1->HeaderText = L"";
-		this->Column1->MinimumWidth = 6;
-		this->Column1->Name = L"Column1";
-		this->Column1->ReadOnly = true;
-		this->Column1->Width = 30;
-		// 
-		// Column4
-		// 
-		this->Column4->HeaderText = L"";
-		this->Column4->MinimumWidth = 6;
-		this->Column4->Name = L"Column4";
-		this->Column4->ReadOnly = true;
-		this->Column4->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-		this->Column4->Width = 30;
-		// 
-		// Column5
-		// 
-		this->Column5->HeaderText = L"";
-		this->Column5->MinimumWidth = 6;
-		this->Column5->Name = L"Column5";
-		this->Column5->ReadOnly = true;
-		this->Column5->Width = 30;
-		// 
-		// Column6
-		// 
-		this->Column6->HeaderText = L"";
-		this->Column6->MinimumWidth = 6;
-		this->Column6->Name = L"Column6";
-		this->Column6->ReadOnly = true;
-		this->Column6->Width = 30;
-		// 
-		// Column2
-		// 
-		this->Column2->FillWeight = 50;
-		this->Column2->HeaderText = L"";
-		this->Column2->MinimumWidth = 6;
-		this->Column2->Name = L"Column2";
-		this->Column2->ReadOnly = true;
-		this->Column2->Width = 30;
-		// 
-		// Column3
-		// 
-		this->Column3->FillWeight = 50;
-		this->Column3->HeaderText = L"";
-		this->Column3->MinimumWidth = 6;
-		this->Column3->Name = L"Column3";
-		this->Column3->ReadOnly = true;
-		this->Column3->Width = 30;
-		// 
-		// Column7
-		// 
-		this->Column7->FillWeight = 50;
-		this->Column7->HeaderText = L"";
-		this->Column7->MinimumWidth = 6;
-		this->Column7->Name = L"Column7";
-		this->Column7->ReadOnly = true;
-		this->Column7->Width = 30;
-		// 
-		// Column8
-		// 
-		this->Column8->FillWeight = 50;
-		this->Column8->HeaderText = L"";
-		this->Column8->MinimumWidth = 6;
-		this->Column8->Name = L"Column8";
-		this->Column8->ReadOnly = true;
-		this->Column8->Width = 30;
-		// 
-		// Column9
-		// 
-		this->Column9->FillWeight = 50;
-		this->Column9->HeaderText = L"";
-		this->Column9->MinimumWidth = 6;
-		this->Column9->Name = L"Column9";
-		this->Column9->ReadOnly = true;
-		this->Column9->Width = 30;
-		// 
-		// Column10
-		// 
-		this->Column10->FillWeight = 50;
-		this->Column10->HeaderText = L"";
-		this->Column10->MinimumWidth = 6;
-		this->Column10->Name = L"Column10";
-		this->Column10->ReadOnly = true;
-		this->Column10->Width = 30;
-		// 
-		// Column11
-		// 
-		this->Column11->FillWeight = 50;
-		this->Column11->HeaderText = L"";
-		this->Column11->MinimumWidth = 6;
-		this->Column11->Name = L"Column11";
-		this->Column11->ReadOnly = true;
-		this->Column11->Width = 30;
-		// 
-		// Column12
-		// 
-		this->Column12->FillWeight = 50;
-		this->Column12->HeaderText = L"";
-		this->Column12->MinimumWidth = 6;
-		this->Column12->Name = L"Column12";
-		this->Column12->ReadOnly = true;
-		this->Column12->Width = 30;
-		// 
-		// Column13
-		// 
-		this->Column13->FillWeight = 50;
-		this->Column13->HeaderText = L"";
-		this->Column13->MinimumWidth = 6;
-		this->Column13->Name = L"Column13";
-		this->Column13->ReadOnly = true;
-		this->Column13->Width = 30;
-	}
-
-	void inicializarColumnasB() {
-		// Column1
-			// 
-		this->Column1B->FillWeight = 50;
-		this->Column1B->HeaderText = L"";
-		this->Column1B->MinimumWidth = 6;
-		this->Column1B->Name = L"Column1B";
-		this->Column1B->ReadOnly = true;
-		this->Column1B->Width = 30;
-		// 
-		// Column4
-		// 
-		this->Column4B->HeaderText = L"";
-		this->Column4B->MinimumWidth = 6;
-		this->Column4B->Name = L"Column4B";
-		this->Column4B->ReadOnly = true;
-		this->Column4B->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-		this->Column4B->Width = 30;
-		// 
-		// Column5
-		// 
-		this->Column5B->HeaderText = L"";
-		this->Column5B->MinimumWidth = 6;
-		this->Column5B->Name = L"Column5B";
-		this->Column5B->ReadOnly = true;
-		this->Column5B->Width = 30;
-		// 
-		// Column6
-		// 
-		this->Column6B->HeaderText = L"";
-		this->Column6B->MinimumWidth = 6;
-		this->Column6B->Name = L"Column6B";
-		this->Column6B->ReadOnly = true;
-		this->Column6B->Width = 30;
-		// 
-		// Column2
-		// 
-		this->Column2B->FillWeight = 50;
-		this->Column2B->HeaderText = L"";
-		this->Column2B->MinimumWidth = 6;
-		this->Column2B->Name = L"Column2B";
-		this->Column2B->ReadOnly = true;
-		this->Column2B->Width = 30;
-		// 
-		// Column3
-		// 
-		this->Column3B->FillWeight = 50;
-		this->Column3B->HeaderText = L"";
-		this->Column3B->MinimumWidth = 6;
-		this->Column3B->Name = L"Column3B";
-		this->Column3B->ReadOnly = true;
-		this->Column3B->Width = 30;
-		// 
-		// Column7
-		// 
-		this->Column7B->FillWeight = 50;
-		this->Column7B->HeaderText = L"";
-		this->Column7B->MinimumWidth = 6;
-		this->Column7B->Name = L"Column7B";
-		this->Column7B->ReadOnly = true;
-		this->Column7B->Width = 30;
-		// 
-		// Column8
-		// 
-		this->Column8B->FillWeight = 50;
-		this->Column8B->HeaderText = L"";
-		this->Column8B->MinimumWidth = 6;
-		this->Column8B->Name = L"Column8B";
-		this->Column8B->ReadOnly = true;
-		this->Column8B->Width = 30;
-		// 
-		// Column9
-		// 
-		this->Column9B->FillWeight = 50;
-		this->Column9B->HeaderText = L"";
-		this->Column9B->MinimumWidth = 6;
-		this->Column9B->Name = L"Column9B";
-		this->Column9B->ReadOnly = true;
-		this->Column9B->Width = 30;
-		// 
-		// Column10
-		// 
-		this->Column10B->FillWeight = 50;
-		this->Column10B->HeaderText = L"";
-		this->Column10B->MinimumWidth = 6;
-		this->Column10B->Name = L"Column10B";
-		this->Column10B->ReadOnly = true;
-		this->Column10B->Width = 30;
-		// 
-		// Column11
-		// 
-		this->Column11B->FillWeight = 50;
-		this->Column11B->HeaderText = L"";
-		this->Column11B->MinimumWidth = 6;
-		this->Column11B->Name = L"Column11B";
-		this->Column11B->ReadOnly = true;
-		this->Column11B->Width = 30;
-		// 
-		// Column12
-		// 
-		this->Column12B->FillWeight = 50;
-		this->Column12B->HeaderText = L"";
-		this->Column12B->MinimumWidth = 6;
-		this->Column12B->Name = L"Column12B";
-		this->Column12B->ReadOnly = true;
-		this->Column12B->Width = 30;
-		// 
-		// Column13
-		// 
-		this->Column13B->FillWeight = 50;
-		this->Column13B->HeaderText = L"";
-		this->Column13B->MinimumWidth = 6;
-		this->Column13B->Name = L"Column13B";
-		this->Column13B->ReadOnly = true;
-		this->Column13B->Width = 30;
-	}
-
-	void inicializarColumnasResultado() {
-		// 
-		// Column1
-		// 
-		this->Column1R->MinimumWidth = 6;
-		this->Column1R->Name = L"Column1R";
-		this->Column1R->Width = 30;
-		// 
-		// Column2
-		// 
-		this->Column2R->MinimumWidth = 6;
-		this->Column2R->Name = L"Column2R";
-		this->Column2R->Width = 30;
-		// 
-		// Column3
-		// 
-		this->Column3R->MinimumWidth = 6;
-		this->Column3R->Name = L"Column3R";
-		this->Column3R->Width = 30;
-		// 
-		// Column4
-		// 
-		this->Column4R->MinimumWidth = 6;
-		this->Column4R->Name = L"Column4R";
-		this->Column4R->Width = 30;
-		// 
-		// Column5
-		// 
-		this->Column5R->MinimumWidth = 6;
-		this->Column5R->Name = L"Column5R";
-		this->Column5R->Width = 30;
-		// 
-		// Column6
-		// 
-		this->Column6R->MinimumWidth = 6;
-		this->Column6R->Name = L"Column6R";
-		this->Column6R->Width = 30;
-		// 
-		// Column7
-		// 
-		this->Column7R->MinimumWidth = 6;
-		this->Column7R->Name = L"Column7R";
-		this->Column7R->Width = 30;
-		// 
-		// Column8
-		// 
-		this->Column8R->MinimumWidth = 6;
-		this->Column8R->Name = L"Column8R";
-		this->Column8R->Width = 30;
-		// 
-		// Column9
-		// 
-		this->Column9R->MinimumWidth = 6;
-		this->Column9R->Name = L"Column9R";
-		this->Column9R->Width = 30;
-		// 
-		// Column10
-		// 
-		this->Column10R->MinimumWidth = 6;
-		this->Column10R->Name = L"Column10R";
-		this->Column10R->Width = 30;
-		// 
-		// Column11
-		// 
-		this->Column11R->MinimumWidth = 6;
-		this->Column11R->Name = L"Column11R";
-		this->Column11R->Width = 30;
-		// 
-		// Column12
-		// 
-		this->Column12R->MinimumWidth = 6;
-		this->Column12R->Name = L"Column12R";
-		this->Column12R->Width = 30;
-		// 
-		// Column13
-		// 
-		this->Column13R->MinimumWidth = 6;
-		this->Column13R->Name = L"Column13R";
-		this->Column13R->Width = 30;
-	}
 };
 }
